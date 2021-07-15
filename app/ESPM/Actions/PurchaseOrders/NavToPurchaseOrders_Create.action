@@ -1,0 +1,6 @@
+{
+	"ModalPageFullscreen": false,
+	"ModalPage": true,
+	"PageToOpen": "/ESPM/Pages/PurchaseOrders/PurchaseOrders_Create.page",
+	"_Type": "Action.Type.Navigation"
+}

@@ -1,0 +1,42 @@
+{
+	"Caption": "$(L,'products')",
+	"Controls": [{
+		"Sections": [{
+			"Header": {
+				"UseTopPadding": false
+			},
+			"ObjectCell": {
+				"AccessoryType": "disclosureIndicator",
+				"Description": "{ShortDescription}",
+				"DetailImage": "{PictureUrl}",
+				"DetailImageIsCircular": false,
+				"Icons": [],
+				"OnPress": "/ESPM/Actions/Products/NavToProducts_Detail.action",
+				"StatusImage": "",
+				"Title": "{Name}",
+				"Footnote": "{CategoryName}",
+				"PreserveIconStackSpacing": false,
+				"StatusText": "",
+				"Subhead": "{ProductId}",
+				"SubstatusText": ""
+			},
+			"Search": {
+				"Enabled": true,
+				"Placeholder": "$(L,'search')",
+				"BarcodeScanner": true,
+				"Delay": 500,
+				"MinimumCharacterThreshold": 3
+			},
+			"Target": {
+				"EntitySet": "Products",
+				"Service": "/ESPM/Services/ESPM.service",
+				"QueryOptions": ""
+			},
+			"_Type": "Section.Type.ObjectTable"
+		}],
+		"_Type": "Control.Type.SectionedTable",
+		"_Name": "SectionedTable"
+	}],
+	"_Type": "Page",
+	"_Name": "Products_List"
+}

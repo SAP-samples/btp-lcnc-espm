@@ -1,0 +1,60 @@
+{
+	"Controls": [
+		{
+			"Target": "",
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable",
+			"Sections": [
+				{
+					"Header": {
+						"UseTopPadding": false
+					},
+					"_Type": "Section.Type.ContactCell",
+					"Target": {
+						"Service": "/ESPM/Services/ESPM.service",
+						"EntitySet": "Customers"
+					},
+					"_Name": "SectionContactCellTable0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"ContactCell": {
+						"DetailImage": "/ESPM/Rules/Customers/Customers_Image.js",
+						"Headline": "{FirstName} {LastName}",
+						"Subheadline": "{City}, {Country}",
+						"OnPress": "/ESPM/Actions/Customers/NavToCustomers_Detail.action",
+						"ActivityItems": [
+							{
+								"ActivityType": "Phone",
+								"ActivityValue": "{PhoneNumber}"
+							},
+							{
+								"ActivityType": "Email",
+								"ActivityValue": "{EmailAddress}"
+							}
+						],
+						"ContextMenu": {
+							"Items": [
+							],
+							"PerformFirstActionWithFullSwipe": true
+						}
+					},
+					"Search": {
+						"Enabled": true,
+						"Placeholder": "Customer Search",
+						"MinimumCharacterThreshold": 3
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					}
+				}
+			]
+		}
+	],
+	"Target": "",
+	"_Type": "Page",
+	"_Name": "Customers_List",
+	"Caption": "$(L,'customers')"
+}

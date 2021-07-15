@@ -1,0 +1,19 @@
+{
+	"_Type": "Action.Type.ODataService.UpdateEntity",
+	"Target": {
+		"EntitySet": "SalesOrderHeaders",
+		"ReadLink": "SalesOrderHeaders('{salesOrderId}')",
+		"Service": "/ESPM/Services/ESPM.service"
+	},
+	"Properties": {
+		"GrossAmount": "{grossAmt}",
+		"NetAmount": "{netAmt}",
+		"TaxAmount": "{taxAmt}"
+	},
+	"ActionResult": {
+		"_Name": "update"
+	},
+	"ShowActivityIndicator": true,
+	"OnFailure": "/ESPM/Actions/UpdateEntityFailureMessage.action",
+	"OnSuccess": "/ESPM/Actions/UpdateEntitySuccessMessage.action"
+}

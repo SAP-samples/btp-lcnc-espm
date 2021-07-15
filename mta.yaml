@@ -1,0 +1,130 @@
+_schema-version: '3.1'
+ID: ESPM
+version: 1.0.0
+description: A simple CAP project.
+parameters:
+  enable-parallel-deployments: true
+build-parameters:
+  before-all:
+    - builder: custom
+      commands:
+        - rm -rf build/ui-deployer
+        - mkdir -p build/ui-deployer
+    - builder: custom
+      commands:
+        - npm install --production
+        - >-
+          bash -c "cds -v 2>/dev/null >/dev/null || npm install --no-save
+          @sap/cds-dk"
+        - npx cds build --production
+modules:
+  - name: ESPM-srv
+    type: nodejs
+    path: gen/srv
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: '${default-url}'
+    requires:
+      - name: ESPM-service-uaa
+      - name: ESPM-service-db
+  - name: ESPM-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    requires:
+      - name: ESPM-service-uaa
+      - name: ESPM-service-db
+  - name: ESPM-ESPM
+    type: html5
+    path: app/ESPM
+    build-parameters:
+      builder: custom
+      commands:
+        - mdk build --target module --ui5
+        - rm -rf .dist
+        - bash -c "cd Web/MDKModule && npm install"
+        - bash -c "cd Web/MDKModule && npm run build"
+        - >-
+          bash -c "mkdir .dist && mv Web/MDKModule/MDKModule-content.zip
+          .dist/ESPM.zip"
+      supported-platforms: []
+      build-result: .dist
+  - name: ESPM-aux-ui-deployer
+    type: com.sap.application.content
+    path: build/ui-deployer
+    build-parameters:
+      build-result: resources
+      requires:
+        - name: ESPM-ESPM
+          artifacts:
+            - ESPM.zip
+          target-path: resources
+    requires:
+      - name: ESPM-service-html5-apps-repo-host
+        parameters:
+          content-target: true
+  - name: ESPM-aux-destinations
+    type: com.sap.application.content
+    requires:
+      - name: ESPM-service-html5-apps-repo-host
+        parameters:
+          service-key:
+            name: ESPM-html5-apps-repo-host-key
+      - name: ESPM-service-uaa
+        parameters:
+          service-key:
+            name: ESPM-uaa-key
+      - name: srv-api
+      - name: ESPM-service-destination
+        parameters:
+          content-target: true
+    parameters:
+      content:
+        subaccount:
+          destinations:
+            - Authentication: OAuth2UserTokenExchange
+              Name: ESPM-app-srv
+              TokenServiceInstanceName: ESPM-uaa
+              URL: '~{srv-api/srv-url}'
+              TokenServiceKeyName: ESPM-uaa-key
+              sap.cloud.service: lcap.ESPM
+            - Name: ESPM-service-html5-apps-repo-host
+              ServiceInstanceName: ESPM-html5-apps-repo-host
+              ServiceKeyName: ESPM-html5-apps-repo-host-key
+              sap.cloud.service: lcap.ESPM
+            - Authentication: OAuth2UserTokenExchange
+              Name: ESPM-service-uaa
+              ServiceInstanceName: ESPM-uaa
+              ServiceKeyName: ESPM-uaa-key
+              sap.cloud.service: lcap.ESPM
+          existing_destinations_policy: update
+    build-parameters:
+      no-source: true
+resources:
+  - type: org.cloudfoundry.managed-service
+    name: ESPM-service-uaa
+    parameters:
+      service: xsuaa
+      service-plan: application
+      service-name: ESPM-uaa
+      path: xs-security.json
+  - type: org.cloudfoundry.managed-service
+    name: ESPM-service-db
+    parameters:
+      service: hana
+      service-plan: hdi-shared
+      service-name: ESPM-db
+  - type: org.cloudfoundry.managed-service
+    name: ESPM-service-html5-apps-repo-host
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+      service-name: ESPM-html5-apps-repo-host
+  - type: org.cloudfoundry.managed-service
+    name: ESPM-service-destination
+    parameters:
+      service: destination
+      service-plan: lite
+      service-name: ESPM-destination
