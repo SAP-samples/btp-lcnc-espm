@@ -176,7 +176,7 @@
 					"Controls": [
 						{
 							"Target": "",
-							"Value": "{SupplierId}",
+							"Value": "{SupplierDetails_SupplierId}",
 							"_Type": "Control.Type.FormCell.ListPicker",
 							"_Name": "productSupplierID",
 							"IsEditable": true,

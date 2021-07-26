@@ -113,7 +113,7 @@
 			},
 			"Target": {
 				"EntitySet": "SalesOrderHeaders",
-				"QueryOptions": "$filter=CustomerDetails_CustomerId eq '{CustomerId}'",
+				"QueryOptions": "$filter=CustomerDetails_CustomerId eq '{CustomerId}'&$expand=CustomerDetails,Items",
 				"Service": "/ESPM/Services/ESPM.service"
 			},
 			"_Type": "Section.Type.GridTable"
