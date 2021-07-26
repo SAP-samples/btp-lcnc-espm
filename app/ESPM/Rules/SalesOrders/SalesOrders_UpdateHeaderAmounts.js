@@ -10,7 +10,7 @@ export default function SalesOrders_UpdateHeaderAmounts(clientAPI) {
 		const serviceName = "/ESPM/Services/ESPM.service";
 		const entitySet = "SalesOrderItems";
 		const properties = [];
-		let queryOptions = encodeURI("$filter=SalesOrderId eq '" + salesOrderId + "'");
+		let queryOptions = encodeURI("$filter=Header_SalesOrderId eq '" + salesOrderId + "'");
 		let SOItemList = libCommon.getEntitySetData(clientAPI, serviceName, entitySet, properties, queryOptions);
 		
 		SOItemList.then(function(list) {

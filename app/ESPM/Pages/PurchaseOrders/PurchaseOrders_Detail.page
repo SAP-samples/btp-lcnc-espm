@@ -7,6 +7,7 @@
 			"Sections": [
 				{
 					"ObjectHeader": {
+						"DetailImage": "sap-icon://customer-and-supplier",
 						"Subhead": "{SupplierDetails/SupplierName}",
 						"StatusText": "Gross Amt: $(N,{GrossAmount},'',{minimumIntegerDigits:1,minimumFractionDigits:2,maximumFractionDigits:2,useGrouping:true})",
 						"SubstatusText": "{CurrencyCode}",
@@ -24,7 +25,7 @@
 							{
 								"Target": "",
 								"NumberOfLines": 1,
-								"Text": "{ProductId}"
+								"Text": "{ProductDetails_ProductId}"
 							},
 							{
 								"Target": "",
@@ -73,7 +74,7 @@
 					],
 					"Target": {
 						"EntitySet": "PurchaseOrderItems",
-						"QueryOptions": "$filter=PurchaseOrderId eq '{PurchaseOrderId}'",
+						"QueryOptions": "$filter=Header_PurchaseOrderId eq '{PurchaseOrderId}'",
 						"Service": "/ESPM/Services/ESPM.service"
 					},
 					"_Name": "SectionGridTable0",

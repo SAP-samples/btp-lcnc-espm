@@ -20,9 +20,8 @@
 		"CurrencyCode": "#Control:currencyPrp/#Value",
 		"GrossAmount": "#Control:grossAmtPrp/#Value",
 		"NetAmount": "#Control:netAmtPrp/#Value",
-		"ProductId": "#Control:productPkr/#SelectedValue",
-		"ItemNumber": "#Control:itemNbrPrp/#Value",
-		"PurchaseOrderId": "#Control:poIdPrp/#Value",
+		"ProductDetails_ProductId": "#Control:productPkr/#SelectedValue",
+		"Header_PurchaseOrderId": "#Control:poIdPrp/#Value",
 		"Quantity": "#Control:quantityPkr/#SelectedValue",
 		"QuantityUnit": "#Control:quantityUnit/#Value",
 		"TaxAmount": "#Control:taxPrp/#Value"

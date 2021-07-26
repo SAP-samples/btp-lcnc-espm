@@ -1,4 +1,4 @@
-CreatedAt;CurrencyCode;CustomerId;GrossAmount;LifeCycleStatus;LifeCycleStatusName;NetAmount;SalesOrderId;TaxAmount
+CreatedAt;CurrencyCode;CustomerDetails_CustomerId;GrossAmount;LifeCycleStatus;LifeCycleStatusName;NetAmount;SalesOrderId;TaxAmount
 2017-03-31T00:00:00;EUR;100000025;1697.773;N;New;1426.700;500000000;271.073
 2017-03-31T00:00:00;EUR;100000012;1057.910;N;New;889.000;500000001;168.910
 2017-03-31T00:00:00;EUR;100000031;742.548;N;New;623.990;500000002;118.558

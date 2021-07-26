@@ -20,7 +20,7 @@
 						"FooterVisible": false
 					},
 					"ObjectCell": {
-						
+						"DetailImage": "sap-icon://sales-order",
 						"Title": "{SalesOrderId}",
 						"Subhead": "{CustomerDetails/FirstName}, {CustomerDetails/LastName}",
 						"Footnote": "{CurrencyCode}",

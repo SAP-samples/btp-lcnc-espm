@@ -96,17 +96,18 @@
         <Property Name="ProductId" Type="Edm.String" MaxLength="10" Nullable="false"/>
         <Property Name="QuantityUnit" Type="Edm.String" MaxLength="3"/>
         <Property Name="ShortDescription" Type="Edm.String" MaxLength="255"/>
-        <Property Name="SupplierId" Type="Edm.String" MaxLength="10"/>
         <Property Name="UpdatedTimestamp" Type="Edm.DateTimeOffset"/>
         <Property Name="Weight" Type="Edm.Decimal" Scale="3" Precision="13"/>
         <Property Name="WeightUnit" Type="Edm.String" MaxLength="3"/>
         <Property Name="Picture" Type="Edm.Stream"/>
         <NavigationProperty Name="StockDetails" Type="ESPMService.Stock" Partner="ProductDetails">
-          <ReferentialConstraint Property="ProductId" ReferencedProperty="ProductId"/>
+          <ReferentialConstraint Property="StockDetails_ProductId" ReferencedProperty="ProductId"/>
         </NavigationProperty>
+        <Property Name="StockDetails_ProductId" Type="Edm.String" MaxLength="255"/>
         <NavigationProperty Name="SupplierDetails" Type="ESPMService.Suppliers" Partner="Products">
-          <ReferentialConstraint Property="SupplierId" ReferencedProperty="SupplierId"/>
+          <ReferentialConstraint Property="SupplierDetails_SupplierId" ReferencedProperty="SupplierId"/>
         </NavigationProperty>
+        <Property Name="SupplierDetails_SupplierId" Type="Edm.String" MaxLength="10"/>
       </EntityType>
       <EntityType Name="PurchaseOrderHeaders">
         <Key>
@@ -116,33 +117,32 @@
         <Property Name="GrossAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
         <Property Name="NetAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
         <Property Name="PurchaseOrderId" Type="Edm.String" MaxLength="10" Nullable="false"/>
-        <Property Name="SupplierId" Type="Edm.String" MaxLength="10"/>
         <Property Name="TaxAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
         <NavigationProperty Name="SupplierDetails" Type="ESPMService.Suppliers">
-          <ReferentialConstraint Property="SupplierId" ReferencedProperty="SupplierId"/>
+          <ReferentialConstraint Property="SupplierDetails_SupplierId" ReferencedProperty="SupplierId"/>
         </NavigationProperty>
+        <Property Name="SupplierDetails_SupplierId" Type="Edm.String" MaxLength="10"/>
         <NavigationProperty Name="Items" Type="Collection(ESPMService.PurchaseOrderItems)" Partner="Header"/>
       </EntityType>
       <EntityType Name="PurchaseOrderItems">
         <Key>
-          <PropertyRef Name="ItemNumber"/>
-          <PropertyRef Name="PurchaseOrderId"/>
+          <PropertyRef Name="ID"/>
         </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
         <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5"/>
         <Property Name="GrossAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
         <Property Name="NetAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
-        <Property Name="ProductId" Type="Edm.String" MaxLength="10"/>
-        <Property Name="ItemNumber" Type="Edm.Int32" Nullable="false"/>
-        <Property Name="PurchaseOrderId" Type="Edm.String" MaxLength="10" Nullable="false"/>
         <Property Name="Quantity" Type="Edm.Decimal" Scale="3" Precision="13"/>
         <Property Name="QuantityUnit" Type="Edm.String" MaxLength="3"/>
         <Property Name="TaxAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
         <NavigationProperty Name="ProductDetails" Type="ESPMService.Products">
-          <ReferentialConstraint Property="ProductId" ReferencedProperty="ProductId"/>
+          <ReferentialConstraint Property="ProductDetails_ProductId" ReferencedProperty="ProductId"/>
         </NavigationProperty>
+        <Property Name="ProductDetails_ProductId" Type="Edm.String" MaxLength="10"/>
         <NavigationProperty Name="Header" Type="ESPMService.PurchaseOrderHeaders" Partner="Items">
-          <ReferentialConstraint Property="PurchaseOrderId" ReferencedProperty="PurchaseOrderId"/>
+          <ReferentialConstraint Property="Header_PurchaseOrderId" ReferencedProperty="PurchaseOrderId"/>
         </NavigationProperty>
+        <Property Name="Header_PurchaseOrderId" Type="Edm.String" MaxLength="10"/>
       </EntityType>
       <EntityType Name="SalesOrderHeaders">
         <Key>
@@ -150,7 +150,6 @@
         </Key>
         <Property Name="CreatedAt" Type="Edm.DateTimeOffset"/>
         <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5"/>
-        <Property Name="CustomerId" Type="Edm.String" MaxLength="10"/>
         <Property Name="GrossAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
         <Property Name="LifeCycleStatus" Type="Edm.String" MaxLength="1" Nullable="false"/>
         <Property Name="LifeCycleStatusName" Type="Edm.String" MaxLength="255" Nullable="false"/>
@@ -158,31 +157,31 @@
         <Property Name="SalesOrderId" Type="Edm.String" MaxLength="10" Nullable="false"/>
         <Property Name="TaxAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
         <NavigationProperty Name="CustomerDetails" Type="ESPMService.Customers" Partner="SalesOrders">
-          <ReferentialConstraint Property="CustomerId" ReferencedProperty="CustomerId"/>
+          <ReferentialConstraint Property="CustomerDetails_CustomerId" ReferencedProperty="CustomerId"/>
         </NavigationProperty>
+        <Property Name="CustomerDetails_CustomerId" Type="Edm.String" MaxLength="10"/>
         <NavigationProperty Name="Items" Type="Collection(ESPMService.SalesOrderItems)" Partner="Header"/>
       </EntityType>
       <EntityType Name="SalesOrderItems">
         <Key>
-          <PropertyRef Name="ItemNumber"/>
-          <PropertyRef Name="SalesOrderId"/>
+          <PropertyRef Name="ID"/>
         </Key>
+        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
         <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5"/>
         <Property Name="DeliveryDate" Type="Edm.DateTimeOffset"/>
         <Property Name="GrossAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
-        <Property Name="ItemNumber" Type="Edm.Int32" Nullable="false"/>
-        <Property Name="SalesOrderId" Type="Edm.String" MaxLength="10" Nullable="false"/>
         <Property Name="NetAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
-        <Property Name="ProductId" Type="Edm.String" MaxLength="10"/>
         <Property Name="Quantity" Type="Edm.Decimal" Scale="3" Precision="15"/>
         <Property Name="QuantityUnit" Type="Edm.String" MaxLength="3"/>
         <Property Name="TaxAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
         <NavigationProperty Name="ProductDetails" Type="ESPMService.Products">
-          <ReferentialConstraint Property="ProductId" ReferencedProperty="ProductId"/>
+          <ReferentialConstraint Property="ProductDetails_ProductId" ReferencedProperty="ProductId"/>
         </NavigationProperty>
+        <Property Name="ProductDetails_ProductId" Type="Edm.String" MaxLength="10"/>
         <NavigationProperty Name="Header" Type="ESPMService.SalesOrderHeaders" Partner="Items">
-          <ReferentialConstraint Property="SalesOrderId" ReferencedProperty="SalesOrderId"/>
+          <ReferentialConstraint Property="Header_SalesOrderId" ReferencedProperty="SalesOrderId"/>
         </NavigationProperty>
+        <Property Name="Header_SalesOrderId" Type="Edm.String" MaxLength="10"/>
       </EntityType>
       <EntityType Name="Stock">
         <Key>
@@ -195,7 +194,7 @@
         <Property Name="QuantityLessMin" Type="Edm.Boolean"/>
         <Property Name="UpdatedTimestamp" Type="Edm.DateTimeOffset"/>
         <NavigationProperty Name="ProductDetails" Type="ESPMService.Products" Partner="StockDetails">
-          <ReferentialConstraint Property="ProductId" ReferencedProperty="ProductId"/>
+          <ReferentialConstraint Property="ProductId" ReferencedProperty="StockDetails_ProductId"/>
         </NavigationProperty>
       </EntityType>
       <EntityType Name="Suppliers">
@@ -216,6 +215,12 @@
       </EntityType>
       <Annotations Target="ESPMService.Products/Picture">
         <Annotation Term="Core.MediaType" String="image/jpeg"/>
+      </Annotations>
+      <Annotations Target="ESPMService.PurchaseOrderItems/ID">
+        <Annotation Term="Core.Computed" Bool="true"/>
+      </Annotations>
+      <Annotations Target="ESPMService.SalesOrderItems/ID">
+        <Annotation Term="Core.Computed" Bool="true"/>
       </Annotations>
     </Schema>
   </edmx:DataServices>

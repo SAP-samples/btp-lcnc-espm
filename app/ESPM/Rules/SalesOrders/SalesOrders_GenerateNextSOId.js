@@ -1,5 +1,5 @@
 export default function GenerateNextSOId(clientAPI) {
-	return clientAPI.read('/ESPM/Services/ESPm.service', 'SalesOrderHeaders', ['SalesOrderId']).then((SOList) => {
+	return clientAPI.read('/ESPM/Services/ESPM.service', 'SalesOrderHeaders', ['SalesOrderId']).then((SOList) => {
     let length = SOList.length;
     console.log(`Calculating SOList length @ ${length}`)
     let nextId = Math.max.apply(Math, SOList.map(function(item) { return item.SalesOrderId;}));

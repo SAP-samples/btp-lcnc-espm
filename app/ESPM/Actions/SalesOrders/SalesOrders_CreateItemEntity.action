@@ -21,10 +21,9 @@
 		"CurrencyCode": "#Control:currencyPrp/#Value",
 		"DeliveryDate": "/ESPM/Rules/SalesOrders/SalesOrders_GenerateDeliveryDate.js",
 		"GrossAmount": "#Control:grossAmtPrp/#Value",
-		"ItemNumber": "#Control:itemNbrPrp/#Value",
-		"SalesOrderId": "#Control:SOIdPrp/#Value",
+		"Header_SalesOrderId": "#Control:SOIdPrp/#Value",
 		"NetAmount": "#Control:netAmtPrp/#Value",
-		"ProductId": "#Control:productPkr/#SelectedValue",
+		"ProductDetails_ProductId": "#Control:productPkr/#SelectedValue",
 		"Quantity": "#Control:quantityPkr/#SelectedValue",
 		"QuantityUnit": "#Control:quantityUnit/#Value",
 		"TaxAmount": "#Control:taxPrp/#Value"

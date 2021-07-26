@@ -1,4 +1,4 @@
-CurrencyCode;GrossAmount;NetAmount;PurchaseOrderId;SupplierId;TaxAmount
+CurrencyCode;GrossAmount;NetAmount;PurchaseOrderId;SupplierDetails_SupplierId;TaxAmount
 EUR;1820.689;1529.990;300000000;100000044;290.699
 EUR;1988.371;1670.900;300000001;100000044;317.471
 EUR;1191.547;1001.300;300000002;100000046;190.247

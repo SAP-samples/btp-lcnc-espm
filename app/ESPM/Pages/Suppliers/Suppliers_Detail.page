@@ -115,7 +115,7 @@
 			},
 			"Target": {
 				"EntitySet": "PurchaseOrderHeaders",
-				"QueryOptions": "$filter=SupplierId eq '{SupplierId}'",
+				"QueryOptions": "$filter=SupplierDetails_SupplierId eq '{SupplierId}'",
 				"Service": "/ESPM/Services/ESPM.service"
 			},
 			"_Name": "SectionGridTable",

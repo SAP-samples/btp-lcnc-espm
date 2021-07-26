@@ -2,11 +2,6 @@
   "DestinationName": "../service/ESPM",
   "OfflineEnabled": false,
   "LanguageURLParam": "sap-language",
-  "OnlineOptions": {
-    "ServiceOptions": {
-      "ieee754Compatible": true
-    }
-  },
   "PathSuffix": "",
   "SourceType": "Cloud",
   "ServiceUrl":""  

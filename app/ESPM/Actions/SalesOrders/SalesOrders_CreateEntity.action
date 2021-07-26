@@ -5,7 +5,7 @@
 	"Properties": {
 		"CurrencyCode": "EUR",
 		"SalesOrderId": "#Control:SOIdPrp/#Value",
-		"CustomerId": "#Control:customerPkr/#SelectedValue",
+		"CustomerDetails_CustomerId": "#Control:customerPkr/#SelectedValue",
 		"LifeCycleStatus":"N",
 		"LifeCycleStatusName":"New"
 	},

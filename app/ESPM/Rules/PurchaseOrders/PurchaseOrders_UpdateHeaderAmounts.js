@@ -9,7 +9,7 @@ export default function PurchaseOrders_UpdateHeaderAmounts(clientAPI) {
 		const serviceName = "/ESPM/Services/ESPM.service";
 		const entitySet = "PurchaseOrderItems";
 		const properties = [];
-		let queryOptions = encodeURI("$filter=PurchaseOrderId eq '" + purchaseOrderId + "'");
+		let queryOptions = encodeURI("$filter=Header_PurchaseOrderId eq '" + purchaseOrderId + "'");
 		let POItemList = libCommon.getEntitySetData(clientAPI, serviceName, entitySet, properties, queryOptions);
 		
 		POItemList.then(function(list){

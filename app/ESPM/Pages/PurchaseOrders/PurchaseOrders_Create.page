@@ -21,10 +21,10 @@
 						{
 							"validationProperties": {
 								"ValidationMessage": "Supplier cannot be empty",
-								"ValidationMessageColor": "ff0000",
+								"ValidationMessageColor": "d1722e",
 								"SeparatorBackgroundColor": "000000",
 								"SeparatorIsHidden": false,
-								"ValidationViewBackgroundColor": "fffa00",
+								"ValidationViewBackgroundColor": "0000ffff",
 								"ValidationViewIsHidden": true
 							},
 							"_Type": "Control.Type.FormCell.ListPicker",

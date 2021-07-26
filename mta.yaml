@@ -18,24 +18,6 @@ build-parameters:
           @sap/cds-dk"
         - npx cds build --production
 modules:
-  - name: ESPM-srv
-    type: nodejs
-    path: gen/srv
-    provides:
-      - name: srv-api
-        properties:
-          srv-url: '${default-url}'
-    requires:
-      - name: ESPM-service-uaa
-      - name: ESPM-service-db
-  - name: ESPM-db-deployer
-    type: hdb
-    path: gen/db
-    parameters:
-      buildpack: nodejs_buildpack
-    requires:
-      - name: ESPM-service-uaa
-      - name: ESPM-service-db
   - name: ESPM-ESPM
     type: html5
     path: app/ESPM
@@ -49,8 +31,90 @@ modules:
         - >-
           bash -c "mkdir .dist && mv Web/MDKModule/MDKModule-content.zip
           .dist/ESPM.zip"
+      _artifactName: ESPM.zip
       supported-platforms: []
       build-result: .dist
+  - name: ESPM-launchpad
+    type: html5
+    path: build/launchpad
+    build-parameters:
+      builder: custom
+      commands:
+        - rm -rf dist-zip dist
+        - npm install
+        - >-
+          npx ui5 build --dest dist --include-task=generateManifestBundle
+          --include-task=generateCachebusterInfo
+        - mkdir dist-zip
+        - bash -c "cd dist && npx bestzip ../dist-zip/launchpad.zip *"
+      _artifactName: launchpad.zip
+      supported-platforms: []
+      build-result: dist-zip
+  - name: ESPM-db-deployer
+    type: hdb
+    path: gen/db
+    parameters:
+      buildpack: nodejs_buildpack
+    build-parameters:
+      builder: npm
+      ignore:
+        - node_modules
+    requires:
+      - name: ESPM-service-uaa
+      - name: ESPM-service-db
+  - name: ESPM-srv
+    type: nodejs
+    path: gen/srv
+    provides:
+      - name: srv-api
+        properties:
+          srv-url: '${default-url}'
+    build-parameters:
+      builder: npm
+      ignore:
+        - node_modules
+        - package-lock.json
+    requires:
+      - name: ESPM-service-uaa
+      - name: ESPM-service-db
+      - name: ESPM-service-destination
+  - name: ESPM-aux-destinations
+    type: com.sap.application.content
+    parameters:
+      content:
+        subaccount:
+          existing_destinations_policy: update
+          destinations:
+            - Authentication: OAuth2UserTokenExchange
+              Name: ESPM-service-uaa
+              ServiceInstanceName: ESPM-uaa
+              ServiceKeyName: ESPM-uaa-key
+              sap.cloud.service: lcap.ESPM
+            - Authentication: OAuth2UserTokenExchange
+              Name: ESPM-app-srv
+              TokenServiceInstanceName: ESPM-uaa
+              TokenServiceKeyName: ESPM-uaa-key
+              URL: '~{srv-api/srv-url}'
+              sap.cloud.service: lcap.ESPM
+            - Name: ESPM-service-html5-apps-repo-host
+              ServiceInstanceName: ESPM-html5-apps-repo-host
+              ServiceKeyName: ESPM-html5-apps-repo-host-key
+              sap.cloud.service: lcap.ESPM
+    build-parameters:
+      no-source: true
+    requires:
+      - name: ESPM-service-uaa
+        parameters:
+          service-key:
+            name: ESPM-uaa-key
+      - name: srv-api
+      - name: ESPM-service-html5-apps-repo-host
+        parameters:
+          service-key:
+            name: ESPM-html5-apps-repo-host-key
+      - name: ESPM-service-destination
+        parameters:
+          content-target: true
   - name: ESPM-aux-ui-deployer
     type: com.sap.application.content
     path: build/ui-deployer
@@ -61,47 +125,14 @@ modules:
           artifacts:
             - ESPM.zip
           target-path: resources
+        - name: ESPM-launchpad
+          artifacts:
+            - launchpad.zip
+          target-path: resources
     requires:
       - name: ESPM-service-html5-apps-repo-host
         parameters:
           content-target: true
-  - name: ESPM-aux-destinations
-    type: com.sap.application.content
-    requires:
-      - name: ESPM-service-html5-apps-repo-host
-        parameters:
-          service-key:
-            name: ESPM-html5-apps-repo-host-key
-      - name: ESPM-service-uaa
-        parameters:
-          service-key:
-            name: ESPM-uaa-key
-      - name: srv-api
-      - name: ESPM-service-destination
-        parameters:
-          content-target: true
-    parameters:
-      content:
-        subaccount:
-          destinations:
-            - Authentication: OAuth2UserTokenExchange
-              Name: ESPM-app-srv
-              TokenServiceInstanceName: ESPM-uaa
-              URL: '~{srv-api/srv-url}'
-              TokenServiceKeyName: ESPM-uaa-key
-              sap.cloud.service: lcap.ESPM
-            - Name: ESPM-service-html5-apps-repo-host
-              ServiceInstanceName: ESPM-html5-apps-repo-host
-              ServiceKeyName: ESPM-html5-apps-repo-host-key
-              sap.cloud.service: lcap.ESPM
-            - Authentication: OAuth2UserTokenExchange
-              Name: ESPM-service-uaa
-              ServiceInstanceName: ESPM-uaa
-              ServiceKeyName: ESPM-uaa-key
-              sap.cloud.service: lcap.ESPM
-          existing_destinations_policy: update
-    build-parameters:
-      no-source: true
 resources:
   - type: org.cloudfoundry.managed-service
     name: ESPM-service-uaa
@@ -110,6 +141,9 @@ resources:
       service-plan: application
       service-name: ESPM-uaa
       path: xs-security.json
+      config:
+        xsappname: 'ESPM-${space}'
+        role-collections: []
   - type: org.cloudfoundry.managed-service
     name: ESPM-service-db
     parameters:
@@ -117,14 +151,14 @@ resources:
       service-plan: hdi-shared
       service-name: ESPM-db
   - type: org.cloudfoundry.managed-service
-    name: ESPM-service-html5-apps-repo-host
-    parameters:
-      service: html5-apps-repo
-      service-plan: app-host
-      service-name: ESPM-html5-apps-repo-host
-  - type: org.cloudfoundry.managed-service
     name: ESPM-service-destination
     parameters:
       service: destination
       service-plan: lite
       service-name: ESPM-destination
+  - type: org.cloudfoundry.managed-service
+    name: ESPM-service-html5-apps-repo-host
+    parameters:
+      service: html5-apps-repo
+      service-plan: app-host
+      service-name: ESPM-html5-apps-repo-host

@@ -31,7 +31,7 @@
 					"Footer": {
 						"Target": "",
 						"_Name": "SectionFooter3",
-						"Caption": "All Sales Orders",
+						"Caption": "View all Sales Orders",
 						"AttributeLabel": "/ESPM/Rules/SalesOrders/SalesOrders_Count.js",
 						"AccessoryType": "disclosureIndicator",
 						"FooterStyle": "attribute",
@@ -51,11 +51,7 @@
 						"FooterVisible": false
 					},
 					"ObjectCell": {
-						"ContextMenu": {
-							"Items": [
-							],
-							"PerformFirstActionWithFullSwipe": true
-						},
+						"DetailImage": "sap-icon://sales-order",
 						"Title": "{SalesOrderId}",
 						"Subhead": "{CustomerDetails/FirstName}, {CustomerDetails/LastName}",
 						"Footnote": "{CurrencyCode}",
@@ -86,7 +82,7 @@
 					"Footer": {
 						"Target": "",
 						"_Name": "SectionFooter4",
-						"Caption": "All Purchase Orders",
+						"Caption": "View all Procurements",
 						"AttributeLabel": "/ESPM/Rules/PurchaseOrders/PurchaseOrders_Count.js",
 						"AccessoryType": "disclosureIndicator",
 						"FooterStyle": "attribute",
@@ -106,11 +102,7 @@
 						"FooterVisible": false
 					},
 					"ObjectCell": {
-						"ContextMenu": {
-							"Items": [
-							],
-							"PerformFirstActionWithFullSwipe": true
-						},
+						"DetailImage": "sap-icon://customer-and-supplier",
 						"Title": "{PurchaseOrderId}",
 						"Subhead": "{SupplierDetails/SupplierName}",
 						"Footnote": "{CurrencyCode}",
@@ -118,7 +110,7 @@
 						"StatusText": "$(N,{NetAmount},'',{minimumIntegerDigits:1,minimumFractionDigits:2,maximumFractionDigits:2,useGrouping:true})",
 						"SubstatusText": "$(N,{TaxAmount},'',{minimumIntegerDigits:1,minimumFractionDigits:2,maximumFractionDigits:2,useGrouping:true})",
 						"DetailImageIsCircular": false,
-						"PreserveIconStackSpacing": true,
+						"PreserveIconStackSpacing": false,
 						"AccessoryType": "disclosureIndicator",
 						"OnPress": "/ESPM/Actions/PurchaseOrders/NavToPurchaseOrders_Detail.action"
 					},

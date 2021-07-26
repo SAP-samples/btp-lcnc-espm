@@ -1,32 +1,28 @@
 namespace sap.ui.espm;
 
 entity PurchaseOrderItems {
+  key Id : UUID  @(Core.Computed : true);
   CurrencyCode : String(5);
   GrossAmount : Decimal(15, 3);
   NetAmount : Decimal(15, 3);
-  ProductId : String(10);
-  key ItemNumber : Integer;
-  key PurchaseOrderId : String(10);
   Quantity : Decimal(13, 3);
   QuantityUnit : String(3);
   TaxAmount : Decimal(15, 3);
-  ProductDetails : Association to one Products on ProductDetails.ProductId = ProductId;
-  Header : Association to one PurchaseOrderHeaders on Header.PurchaseOrderId = PurchaseOrderId;
+  ProductDetails : Association to one Products;
+  Header : Association to one PurchaseOrderHeaders;
 }
 
 entity SalesOrderItems {
+  key Id : UUID  @(Core.Computed : true);
   CurrencyCode : String(5);
   DeliveryDate : DateTime;
   GrossAmount : Decimal(15, 3);
-  key ItemNumber : Integer;
-  key SalesOrderId : String(10);
   NetAmount : Decimal(15, 3);
-  ProductId : String(10);
   Quantity : Decimal(15, 3);
   QuantityUnit : String(3);
   TaxAmount : Decimal(15, 3);
-  ProductDetails : Association to one Products on ProductDetails.ProductId = ProductId;
-  Header : Association to one SalesOrderHeaders on Header.SalesOrderId = SalesOrderId;
+  ProductDetails : Association to one Products;
+  Header : Association to one SalesOrderHeaders;
 }
 
 entity Products {
@@ -44,13 +40,11 @@ entity Products {
   key ProductId : String(10);
   QuantityUnit : String(3);
   ShortDescription : String(255);
-  SupplierId : String(10);
   UpdatedTimestamp : DateTime;
   Weight : Decimal(13, 3);
   WeightUnit : String(3);
   Picture : LargeBinary @Core.MediaType : 'image/jpeg';
-  StockDetails : Association to one Stock on StockDetails.ProductId = ProductId;
-  SupplierDetails : Association to one Suppliers on SupplierDetails.SupplierId = SupplierId;
+  SupplierDetails : Association to one Suppliers;
 }
 
 entity PurchaseOrderHeaders {
@@ -58,9 +52,8 @@ entity PurchaseOrderHeaders {
   GrossAmount : Decimal(15, 3);
   NetAmount : Decimal(15, 3);
   key PurchaseOrderId : String(10);
-  SupplierId : String(10);
   TaxAmount : Decimal(15, 3);
-  SupplierDetails: Association to one Suppliers on SupplierDetails.SupplierId = SupplierId;
+  SupplierDetails: Association to one Suppliers;
   Items : Association to many PurchaseOrderItems on Items.Header = $self;
 }
 
@@ -76,14 +69,13 @@ entity ProductCategories {
 entity SalesOrderHeaders {
   CreatedAt : DateTime;
   CurrencyCode : String(5);
-  CustomerId : String(10);
   GrossAmount : Decimal(15, 3);
   LifeCycleStatus : String(1) not null;
   LifeCycleStatusName : String(255) not null;
   NetAmount : Decimal(15, 3);
   key SalesOrderId : String(10);
   TaxAmount : Decimal(15, 3);
-  CustomerDetails : Association to one Customers on CustomerDetails.CustomerId = CustomerId;
+  CustomerDetails : Association to one Customers;
   Items : Association to many SalesOrderItems on Items.Header = $self;
 }
 
@@ -119,7 +111,6 @@ entity Stock {
   Quantity : Decimal(13, 3);
   QuantityLessMin : Boolean;
   UpdatedTimestamp : DateTime;
-  ProductDetails : Association to one Products on ProductDetails.StockDetails = $self;
 }
 
 entity Suppliers {

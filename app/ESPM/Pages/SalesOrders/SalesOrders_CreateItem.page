@@ -21,24 +21,12 @@
 						},
 						{
 							"Target": "",
-							"Value": "/ESPM/Rules/SalesOrders/SalesOrders_GenerateNextSOItemNumber.js",
-							"_Type": "Control.Type.FormCell.SimpleProperty",
-							"_Name": "itemNbrPrp",
-							"IsEditable": false,
-							"Styles": {
-								"Value": "read-only"
-							},
-							"Caption": "Item Number",
-							"PlaceHolder": "value"
-						},
-						{
-							"Target": "",
 							"validationProperties": {
 								"ValidationMessage": "Select a Product from list",
-								"ValidationMessageColor": "ff0000",
+								"ValidationMessageColor": "d1722e",
 								"SeparatorBackgroundColor": "000000",
 								"SeparatorIsHidden": false,
-								"ValidationViewBackgroundColor": "fffa00",
+								"ValidationViewBackgroundColor": "0000ffff",
 								"ValidationViewIsHidden": true
 							},
 							"_Type": "Control.Type.FormCell.ListPicker",

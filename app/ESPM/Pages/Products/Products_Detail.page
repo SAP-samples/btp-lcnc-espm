@@ -113,7 +113,7 @@
 			"Target": {
 				"EntitySet": "Suppliers",
 				"Service": "/ESPM/Services/ESPM.service",
-				"QueryOptions":"$filter=SupplierId eq '{SupplierId}'"
+				"QueryOptions":"$filter=SupplierId eq '{SupplierDetails_SupplierId}'"
 			},
 			"_Type": "Section.Type.ObjectTable"
 		}],

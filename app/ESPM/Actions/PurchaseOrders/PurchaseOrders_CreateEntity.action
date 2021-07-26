@@ -5,7 +5,7 @@
 	"Properties": {
 		"CurrencyCode": "EUR",
 		"PurchaseOrderId": "#Control:poIdPrp/#Value",
-		"SupplierId": "#Control:supplierPkr/#SelectedValue"
+		"SupplierDetails_SupplierId": "#Control:supplierPkr/#SelectedValue"
 	},
 	"Target": {
 		"EntitySet": "PurchaseOrderHeaders",

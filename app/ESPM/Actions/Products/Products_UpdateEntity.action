@@ -18,7 +18,7 @@
 		"ShortDescription": "#Control:ProductDescription/#Value",
 		"Weight": "#Control:ProductWeight/#Value",
 		"WeightUnit": "#Control:ProductWeightUnit/#Value",
-		"SupplierId": "#Control:productSupplierID/#SelectedValue"
+		"SupplierDetails_SupplierId": "#Control:productSupplierID/#SelectedValue"
 	},
 	"UpdateLinks": [],
 	"ActionResult": {
