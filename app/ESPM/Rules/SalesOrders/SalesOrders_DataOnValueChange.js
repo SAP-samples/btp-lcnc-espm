@@ -1,15 +1,15 @@
 import libCommon from '../Library/CommonLibrary'
 
 export default function SalesOrders_DataOnValueChange(clientAPI) {
-    //Remove validation message
-    clientAPI.setValidationProperty('ValidationViewIsHidden', true);
-    clientAPI.redraw();
+	//Remove validation message
+	clientAPI.setValidationProperty('ValidationViewIsHidden', true);
+	clientAPI.redraw();
     
 	const productPkr = clientAPI.evaluateTargetPathForAPI('#Page:SalesOrders_CreateItem/#Control:productPkr');
 	const productId = productPkr.getValue()[0].ReturnValue;
 
 	let qtyPkr = clientAPI.evaluateTargetPathForAPI("#Page:SalesOrders_CreateItem/#Control:quantityPkr");
-    let qty = qtyPkr.getValue()[0].ReturnValue;
+	let qty = qtyPkr.getValue()[0].ReturnValue;
 
 	return libCommon.retrieveProduct(clientAPI, productId).then(function(data) {
 		

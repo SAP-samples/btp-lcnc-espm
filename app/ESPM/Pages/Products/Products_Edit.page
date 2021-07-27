@@ -197,7 +197,6 @@
 								"ReturnValue": "{SupplierId}",
 								"Target": {
 									"EntitySet": "Suppliers",
-									"QueryOptions": "$top=40",
 									"Service": "/ESPM/Services/ESPM.service"
 								}
 							}

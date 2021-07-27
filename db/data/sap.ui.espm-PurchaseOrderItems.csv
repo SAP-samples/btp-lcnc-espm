@@ -1,4 +1,4 @@
-ID;CurrencyCode;GrossAmount;NetAmount;ProductDetails_ProductId;Header_PurchaseOrderId;Quantity;QuantityUnit;TaxAmount
+Id;CurrencyCode;GrossAmount;NetAmount;ProductDetails_ProductId;Header_PurchaseOrderId;Quantity;QuantityUnit;TaxAmount
 3d6ddd87-377b-44dd-8d62-80eaa0b40664;EUR;53.539;44.990;HT-2025;300000000;1.000;EA;8.549
 31269c42-cd18-4676-9ca3-de2ede5f32a1;EUR;339.150;285.000;HT-1031;300000000;1.000;EA;54.150
 a3584b4d-9481-45d9-9b08-a4ad211bbf7c;EUR;1428.000;1200.000;HT-1602;300000000;1.000;EA;228.000
