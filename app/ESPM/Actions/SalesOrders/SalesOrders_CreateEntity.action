@@ -1,0 +1,21 @@
+{
+	"CreateLinks": [],
+	"OnFailure": "/ESPM/Actions/CreateEntityFailureMessage.action",
+	"OnSuccess": "/ESPM/Actions/CreateEntitySuccessMessage.action",
+	"Properties": {
+		"CurrencyCode": "EUR",
+		"SalesOrderId": "#Control:SOIdPrp/#Value",
+		"CustomerDetails_CustomerId": "#Control:customerPkr/#SelectedValue",
+		"LifeCycleStatus":"N",
+		"LifeCycleStatusName":"New"
+	},
+	"Target": {
+		"EntitySet": "SalesOrderHeaders",
+		"Service": "/ESPM/Services/ESPM.service"
+	},
+	"ActionResult": {
+		"_Name": "create"
+	},
+	"ShowActivityIndicator": true,
+	"_Type": "Action.Type.ODataService.CreateEntity"
+}

@@ -1,0 +1,64 @@
+{
+	"Controls": [
+		{
+			"Target": "",
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable",
+			"Sections": [
+				{
+					"Header": {
+						"UseTopPadding": false
+					},
+					"_Type": "Section.Type.ObjectTable",
+					"Target": {
+						"Service": "/ESPM/Services/ESPM.service",
+						"EntitySet": "PurchaseOrderHeaders",
+						"QueryOptions": "$expand=SupplierDetails,Items"
+					},
+					"_Name": "SectionObjectTable0",
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"ObjectCell": {
+						"DetailImage": "sap-icon://customer-and-supplier",
+						"Title": "{PurchaseOrderId}",
+						"Subhead": "{SupplierDetails/SupplierName}",
+						"Footnote": "{CurrencyCode}",
+						"Description": "Gross Amt: $(N,{GrossAmount},'',{minimumIntegerDigits:1,minimumFractionDigits:2,maximumFractionDigits:2,useGrouping:true})",
+						"StatusText": "$(N,{NetAmount},'',{minimumIntegerDigits:1,minimumFractionDigits:2,maximumFractionDigits:2,useGrouping:true})",
+						"SubstatusText": "$(N,{TaxAmount},'',{minimumIntegerDigits:1,minimumFractionDigits:2,maximumFractionDigits:2,useGrouping:true})",
+						"DetailImageIsCircular": false,
+						"PreserveIconStackSpacing": false,
+						"AccessoryType": "disclosureIndicator",
+						"OnPress": "/ESPM/Actions/PurchaseOrders/NavToPurchaseOrders_Detail.action"
+					},
+					"Search": {
+						"Enabled": true,
+						"Placeholder": "$(L,'search')",
+						"BarcodeScanner": true,
+						"Delay": 500,
+						"MinimumCharacterThreshold": 3
+					}
+				}
+			]
+		}
+	],
+	"Target": "",
+	"_Type": "Page",
+	"_Name": "PurchaseOrders_List",
+	"Caption": "$(L,'purchase_orders')",
+	"ActionBar": {
+		"Items": [
+			{
+				"Target": "",
+				"_Name": "ActionBarItem0",
+				"SystemItem": "Add",
+				"Position": "right",
+				"IsIconCircular": false,
+				"OnPress": "/ESPM/Actions/PurchaseOrders/NavToPurchaseOrders_Create.action",
+				"Text": ""
+			}
+		],
+		"_Name": "ActionBar0"
+	}
+}

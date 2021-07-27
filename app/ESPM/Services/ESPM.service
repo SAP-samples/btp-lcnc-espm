@@ -1,0 +1,8 @@
+{
+  "DestinationName": "../service/ESPM",
+  "OfflineEnabled": false,
+  "LanguageURLParam": "sap-language",
+  "PathSuffix": "",
+  "SourceType": "Cloud",
+  "ServiceUrl":""  
+}

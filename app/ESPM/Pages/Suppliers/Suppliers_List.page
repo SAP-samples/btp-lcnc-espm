@@ -1,0 +1,42 @@
+{
+	"Caption": "Suppliers",
+	"Controls": [{
+		"Sections": [{
+			"Header": {
+				"UseTopPadding": false
+			},
+			"ObjectCell": {
+				"AccessoryType": "disclosureIndicator",
+				"Description": "",
+				"DetailImage": "/ESPM/Rules/Suppliers/Suppliers_Image.js",
+				"DetailImageIsCircular": true,
+				"Icons": [],
+				"OnPress": "/ESPM/Actions/Suppliers/NavToSuppliers_Detail.action",
+				"StatusImage": "",
+				"Title": "{SupplierName}",
+				"Footnote": "{#Property:City}, {#Property:Country} - {#Property:PostalCode}",
+				"PreserveIconStackSpacing": true,
+				"StatusText": "{PhoneNumber}",
+				"Subhead": "{SupplierId}",
+				"SubstatusText": "{EmailAddress}"
+			},
+			"Search": {
+				"Enabled": true,
+				"Placeholder": "$(L,'search')",
+				"BarcodeScanner": true,
+				"Delay": 500,
+				"MinimumCharacterThreshold": 3
+			},
+			"Target": {
+				"EntitySet": "Suppliers",
+				"Service": "/ESPM/Services/ESPM.service",
+				"QueryOptions": ""
+			},
+			"_Type": "Section.Type.ObjectTable"
+		}],
+		"_Type": "Control.Type.SectionedTable",
+		"_Name": "SectionedTable"
+	}],
+	"_Type": "Page",
+	"_Name": "Suppliers_List"
+}

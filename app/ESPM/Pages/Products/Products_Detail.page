@@ -1,0 +1,125 @@
+{
+	"Caption": "$(L,'product_details')",
+	"ActionBar": {
+		"Items": [{
+			"OnPress": "/ESPM/Actions/Products/NavToProducts_Edit.action",
+			"Position": "right",
+			"SystemItem": "Edit"
+		}]
+	},
+	"Controls": [{
+		"Sections": [{
+			"ObjectHeader": {
+				"DetailImage": "{PictureUrl}",
+				"HeadlineText": "",
+				"Subhead": "{Category}",
+				"Tags": [],
+				"BodyText": "{Name}",
+				"Footnote": "{DimensionHeight} x {DimensionWidth} x {DimensionDepth} {DimensionUnit}",
+				"Description": "{ShortDescription}",
+				"StatusText": "{Price}",
+				"StatusImage": "",
+				"SubstatusImage": "",
+				"SubstatusText": "{CurrencyCode}"
+			},
+			"_Type": "Section.Type.ObjectHeader"
+		}, {
+			"KeyAndValues": [
+				{
+					"KeyName": "Description",
+					"Value": "{ShortDescription}"
+				}
+			],
+			"Layout": {
+				"NumberOfColumns": 1
+			},
+			"MaxItemCount": 1,
+			"_Type": "Section.Type.KeyValue"
+		}, {
+			"Header": {
+				"UseTopPadding": true
+			},
+			"KeyAndValues": [
+				{
+					"KeyName": "Category",
+					"Value": "{CategoryName}"
+				},
+				{
+					"KeyName": "Quantity Unit",
+					"Value": "{QuantityUnit}"
+				}
+			],
+			"Layout": {
+				"NumberOfColumns": 2
+			},
+			"MaxItemCount": 1,
+			"_Type": "Section.Type.KeyValue"
+		}, {
+			"Header": {
+				"Caption": "Dimensions",
+				"UseTopPadding": true
+			},
+			"Layout": {
+				"NumberOfColumns": 2
+			},
+			"SimplePropertyCells": [
+				{
+					"SimplePropertyCell": {
+						"AccessoryType": "none",
+						"KeyName": "Height",
+						"Value": "{DimensionHeight} {DimensionUnit}"
+					}
+				},
+				{
+					"SimplePropertyCell": {
+						"AccessoryType": "none",
+						"KeyName": "Width",
+						"Value": "{DimensionWidth} {DimensionUnit}"
+					}
+				},
+				{
+					"SimplePropertyCell": {
+						"AccessoryType": "none",
+						"KeyName": "Depth",
+						"Value": "{DimensionDepth} {DimensionUnit}"
+					}
+				},
+				{
+					"SimplePropertyCell": {
+						"AccessoryType": "none",
+						"KeyName": "Weight",
+						"Value": "{Weight} {WeightUnit}"
+					}
+				}
+			],
+			"_Type": "Section.Type.SimplePropertyCollection"
+		}, {
+			"EmptySection": {
+				"Caption": "$(L,'no_supplier')"
+			},
+			"Header": {
+				"Caption": "Supplier Details",
+				"UseTopPadding": false
+			},
+			"ObjectCell": {
+				"AccessoryType": "none",
+				"DetailImageIsCircular": true,
+				"DetailImage": "/ESPM/Rules/Suppliers/Suppliers_Image.js",
+				"Footnote": "{EmailAddress}",
+				"PreserveIconStackSpacing": true,
+				"Subhead": "{Street}, {City}, {Country}",
+				"Title": "{SupplierName}"
+			},
+			"Target": {
+				"EntitySet": "Suppliers",
+				"Service": "/ESPM/Services/ESPM.service",
+				"QueryOptions":"$filter=SupplierId eq '{SupplierDetails_SupplierId}'"
+			},
+			"_Type": "Section.Type.ObjectTable"
+		}],
+		"_Type": "Control.Type.SectionedTable",
+		"_Name": "SectionedTable"
+	}],
+	"_Type": "Page",
+	"_Name": "Products_Detail"
+}

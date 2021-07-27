@@ -1,0 +1,146 @@
+{
+	"Controls": [
+		{
+			"Target": "",
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable",
+			"Sections": [
+				{
+					"ObjectHeader": {
+						"DetailImage": "sap-icon://sales-order",
+						"Subhead": "{CustomerDetails/FirstName}, {CustomerDetails/LastName}",
+						"StatusText": "$(C,{NetAmount},{CurrencyCode},'',{minimumFractionDigits:2,useGrouping:true})",
+						"SubstatusText": "$(C,{TaxAmount},{CurrencyCode},'',{minimumFractionDigits:2,useGrouping:true})",
+						"HeadlineText": "{SalesOrderId}",
+						"Tags": [
+						],
+						"Target": ""
+					},
+					"_Type": "Section.Type.ObjectHeader",
+					"_Name": "SectionObjectHeader0"
+				},
+				{
+					"Row": {
+						"Items": [
+							{
+								"Target": "",
+								"NumberOfLines": 1,
+								"Text": "{ProductDetails_ProductId}"
+							},
+							{
+								"Target": "",
+								"NumberOfLines": 1,
+								"Text": "{Quantity} {QuantityUnit}"
+							},
+							{
+								"Target": "",
+								"NumberOfLines": 1,
+								"Text": "$(C,{NetAmount},{CurrencyCode},'',{maximumFractionDigits:2,useGrouping:true})",
+								"TextAlignment": "right"
+							},
+							{
+								"Target": "",
+								"NumberOfLines": 1,
+								"Text": "$(C,{TaxAmount},{CurrencyCode},'',{maximumFractionDigits:2,useGrouping:true})",
+								"TextAlignment": "right"
+							},
+							{
+								"Target": "",
+								"NumberOfLines": 1,
+								"Text": "$(C,{GrossAmount},{CurrencyCode},'',{maximumFractionDigits:2,useGrouping:true})",
+								"TextAlignment": "right"
+							},
+							{
+								"Target": "",
+								"NumberOfLines": 1,
+								"Text": "$(D,{DeliveryDate},'','',{format:'medium'})"
+							}
+						],
+						"Layout": {
+							"ColumnWidthPercentage": [
+								0.2,
+								0.15,
+								0.15,
+								0.15,
+								0.15,
+								0.2
+							]
+						},
+						"AccessoryType": "none"
+					},
+					"_Type": "Section.Type.GridTable",
+					"DataSubscriptions": [
+						"SalesOrderItems"
+					],
+					"Target": {
+						"EntitySet": "SalesOrderItems",
+						"Service": "/ESPM/Services/ESPM.service",
+						"QueryOptions": "$filter=Header_SalesOrderId eq '{SalesOrderId}'"
+					},
+					"_Name": "SectionGridTable0",
+					"Header": {
+						"Grid": {
+							"Items": [
+								{
+									"Target": "",
+									"NumberOfLines": 1,
+									"Text": "Product ID"
+								},
+								{
+									"Target": "",
+									"NumberOfLines": 1,
+									"Text": "Quantity"
+								},
+								{
+									"Target": "",
+									"NumberOfLines": 1,
+									"Text": "Net Amt",
+									"TextAlignment": "right"
+								},
+								{
+									"Target": "",
+									"NumberOfLines": 1,
+									"Text": "Tax Amt",
+									"TextAlignment": "right"
+								},
+								{
+									"Target": "",
+									"NumberOfLines": 1,
+									"Text": "Gross Amt",
+									"TextAlignment": "right"
+								},
+								{
+									"Target": "",
+									"NumberOfLines": 1,
+									"Text": "Delivery Date"
+								}
+							]
+						},
+						"UseTopPadding": true
+					},
+					"EmptySection": {
+						"Caption": "$(L,'no_order')",
+						"FooterVisible": false
+					}
+				}
+			]
+		}
+	],
+	"Target": "",
+	"_Type": "Page",
+	"_Name": "SalesOrders_Detail",
+	"Caption": "$(L,'sales_orders_details')",
+	"ActionBar": {
+		"Items": [
+			{
+				"Target": "",
+				"_Name": "ActionBarItem0",
+				"Position": "right",
+				"IsIconCircular": false,
+				"OnPress": "/ESPM/Actions/SalesOrders/NavToSalesOrders_CreateItem.action",
+				"Text": "Add Item"
+			}
+		],
+		"_Name": "ActionBar0"
+	}
+}

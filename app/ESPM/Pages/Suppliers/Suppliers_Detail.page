@@ -1,0 +1,129 @@
+{
+	"Caption": "Supplier Details",
+	"Controls": [{
+		"Sections": [{
+			"ObjectHeader": {
+				"DetailImage": "/ESPM/Rules/Suppliers/Suppliers_Image.js",
+				"DetailImageIsCircular": true,
+				"HeadlineText": "{SupplierName}",
+				"Subhead": "{SupplierId}",
+				"Tags": [],
+				"BodyText": "",
+				"Footnote": "",
+				"Description": "",
+				"StatusText": "",
+				"StatusImage": "",
+				"SubstatusImage": "",
+				"SubstatusText": ""
+			},
+			"_Type": "Section.Type.ObjectHeader"
+		}, {
+			"KeyAndValues": [
+				{
+					"KeyName": "Address",
+					"Value": "{Street}"
+				},
+				{
+					"KeyName": "City",
+					"Value": "{City}"
+				},
+				{
+					"KeyName": "Postal Code",
+					"Value": "{PostalCode}"
+				},
+				{
+					"KeyName": "Country",
+					"Value": "{Country}"
+				}
+			],
+			"Layout": {
+				"NumberOfColumns": 2
+			},
+			"MaxItemCount": 1,
+			"_Type": "Section.Type.KeyValue"
+		}, {
+			"EmptySection": {
+				"Caption": "$(L,'no_order')"
+			},
+			"Header": {
+				"Grid": {
+					"Items": [
+						{
+							"NumberOfLines": 1,
+							"Text": "PurchaseOrder ID"
+						},
+						{
+							"NumberOfLines": 1,
+							"Text": "Net Amt",
+							"TextAlignment": "right"
+						},
+						{
+							"NumberOfLines": 1,
+							"Text": "Taxes",
+							"TextAlignment": "right"
+						},
+						{
+							"NumberOfLines": 1,
+							"Text": "Gross Amt",
+							"TextAlignment": "right"
+						},
+						{
+							"NumberOfLines": 1,
+							"Text": "Currency"
+						}
+					]
+				},
+				"UseTopPadding": true
+			},
+			"Row": {
+				"AccessoryType": "none",
+				"Items": [
+					{
+						"NumberOfLines": 1,
+						"Text": "{PurchaseOrderId}"
+					},
+					{
+						"NumberOfLines": 1,
+						"Text": "$(C,{NetAmount},{CurrencyCode},'',{minimumFractionDigits:2,useGrouping:true})",
+						"TextAlignment": "right"
+					},
+						{
+						"NumberOfLines": 1,
+						"Text": "$(C,{TaxAmount},{CurrencyCode},'',{minimumFractionDigits:2,useGrouping:true})",
+						"TextAlignment": "right"
+					},
+					{
+						"NumberOfLines": 1,
+						"Text": "$(C,{GrossAmount},{CurrencyCode},'',{minimumFractionDigits:2,useGrouping:true})",
+						"TextAlignment": "right"
+					},
+					{
+						"NumberOfLines": 1,
+						"Text": "{CurrencyCode}"
+					}
+				],
+				"Layout": {
+					"ColumnWidthPercentage": [
+						0.25,
+						0.15,
+						0.15,
+						0.15,
+						0.15
+					]
+				},
+				"OnPress": "/ESPM/Actions/PurchaseOrders/NavToPurchaseOrders_Detail.action"
+			},
+			"Target": {
+				"EntitySet": "PurchaseOrderHeaders",
+				"QueryOptions": "$filter=SupplierDetails_SupplierId eq '{SupplierId}'",
+				"Service": "/ESPM/Services/ESPM.service"
+			},
+			"_Name": "SectionGridTable",
+			"_Type": "Section.Type.GridTable"
+		}],
+		"_Type": "Control.Type.SectionedTable",
+		"_Name": "SectionedTable"
+	}],
+	"_Type": "Page",
+	"_Name": "Suppliers_Detail"
+}

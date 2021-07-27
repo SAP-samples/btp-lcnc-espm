@@ -1,0 +1,249 @@
+{
+	"Controls": [
+		{
+			"Target": "",
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable",
+			"Sections": [
+				{
+					"ObjectHeader": {
+						"Subhead": "Enterprise Sales Procurement Model (ESPM) Application",
+						"Description": "Sample Application utliizing sample data models, services to illustrates the various building blocks of creating a multi-channel application",
+						"StatusText": "v1.0.0",
+						"DetailImage": "/ESPM/Images/mdk_logo.png",
+						"DetailImageIsCircular": false,
+						"HeadlineText": "SAP BTP Multi-channel Application",
+						"Tags": [
+							"/ESPM/Rules/Overview/Overview_DaysLeftInQuarter.js",
+							"/ESPM/Rules/Overview/Overview_GetCurrentQuarter.js"
+						],
+						"Target": ""
+					},
+					"_Type": "Section.Type.ObjectHeader",
+					"_Name": "SectionObjectHeader0",
+					"Visible": true
+				},
+				{
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "My Sales"
+					},
+					"Footer": {
+						"Target": "",
+						"_Name": "SectionFooter3",
+						"Caption": "View all Sales Orders",
+						"AttributeLabel": "/ESPM/Rules/SalesOrders/SalesOrders_Count.js",
+						"AccessoryType": "disclosureIndicator",
+						"FooterStyle": "attribute",
+						"Visible": true,
+						"OnPress": "/ESPM/Actions/SalesOrders/NavToSalesOrders_List.action",
+						"UseBottomPadding": false
+					},
+					"_Type": "Section.Type.ObjectTable",
+					"Target": {
+						"Service": "/ESPM/Services/ESPM.service",
+						"EntitySet": "SalesOrderHeaders",
+						"QueryOptions": "$top=3&$expand=CustomerDetails,Items"
+					},
+					"_Name": "SectionObjectTable0",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"ObjectCell": {
+						"DetailImage": "sap-icon://sales-order",
+						"Title": "{SalesOrderId}",
+						"Subhead": "{CustomerDetails/FirstName}, {CustomerDetails/LastName}",
+						"Footnote": "{CurrencyCode}",
+						"Description": "Gross Amt: $(N,{GrossAmount},'',{minimumFractionDigits:2, maximumFractionDigits:2, useGrouping:true})",
+						"StatusText": "$(N,{NetAmount},'',{minimumFractionDigits:2, maximumFractionDigits:2, useGrouping:true})",
+						"SubstatusText": "$(N,{TaxAmount},'',{minimumFractionDigits:2, maximumFractionDigits:2, useGrouping:true})",
+						"DetailImageIsCircular": false,
+						"PreserveIconStackSpacing": false,
+						"AccessoryType": "disclosureIndicator",
+						"OnPress": "/ESPM/Actions/SalesOrders/NavToSalesOrders_Detail.action"
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"HighlightSelectedItem": false,
+					"Selection": {
+						"ExitOnLastDeselect": true,
+						"LongPressToEnable": "None",
+						"Mode": "None"
+					}
+				},
+				{
+					"Header": {
+						"UseTopPadding": true,
+						"Caption": "My Procurements"
+					},
+					"Footer": {
+						"Target": "",
+						"_Name": "SectionFooter4",
+						"Caption": "View all Procurements",
+						"AttributeLabel": "/ESPM/Rules/PurchaseOrders/PurchaseOrders_Count.js",
+						"AccessoryType": "disclosureIndicator",
+						"FooterStyle": "attribute",
+						"Visible": true,
+						"OnPress": "/ESPM/Actions/PurchaseOrders/NavToPurchaseOrders_List.action",
+						"UseBottomPadding": false
+					},
+					"_Type": "Section.Type.ObjectTable",
+					"Target": {
+						"Service": "/ESPM/Services/ESPM.service",
+						"EntitySet": "PurchaseOrderHeaders",
+						"QueryOptions": "$top=3&$expand=SupplierDetails,Items"
+					},
+					"_Name": "SectionObjectTable1",
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"ObjectCell": {
+						"DetailImage": "sap-icon://customer-and-supplier",
+						"Title": "{PurchaseOrderId}",
+						"Subhead": "{SupplierDetails/SupplierName}",
+						"Footnote": "{CurrencyCode}",
+						"Description": "Gross Amt: $(N,{GrossAmount},'',{minimumIntegerDigits:1,minimumFractionDigits:2,maximumFractionDigits:2,useGrouping:true})",
+						"StatusText": "$(N,{NetAmount},'',{minimumIntegerDigits:1,minimumFractionDigits:2,maximumFractionDigits:2,useGrouping:true})",
+						"SubstatusText": "$(N,{TaxAmount},'',{minimumIntegerDigits:1,minimumFractionDigits:2,maximumFractionDigits:2,useGrouping:true})",
+						"DetailImageIsCircular": false,
+						"PreserveIconStackSpacing": false,
+						"AccessoryType": "disclosureIndicator",
+						"OnPress": "/ESPM/Actions/PurchaseOrders/NavToPurchaseOrders_Detail.action"
+					},
+					"DataPaging": {
+						"ShowLoadingIndicator": false,
+						"PageSize": 50
+					},
+					"HighlightSelectedItem": false,
+					"Selection": {
+						"ExitOnLastDeselect": true,
+						"LongPressToEnable": "None",
+						"Mode": "None"
+					}
+				},
+				{
+					"_Type": "Section.Type.ImageCollection",
+					"Target": {
+						"Service": "/ESPM/Services/ESPM.service",
+						"EntitySet": "Products",
+						"QueryOptions": "$top=15"
+					},
+					"_Name": "SectionImageCollection0",
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,'product_catalog')"
+					},
+					"Footer": {
+						"Target": "",
+						"_Name": "SectionFooter2",
+						"Caption": "$(L,'see_all_products')",
+						"AttributeLabel": "/ESPM/Rules/Products/Products_Count.js",
+						"AccessoryType": "disclosureIndicator",
+						"FooterStyle": "attribute",
+						"OnPress": "/ESPM/Actions/Products/NavToProducts_List.action",
+						"UseBottomPadding": true
+					},
+					"Visible": true,
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"ImageCell": {
+						"Title": "{Name}",
+						"Subtitle": "{Category}",
+						"Image": "{PictureUrl}",
+						"ImageIsCircular": false,
+						"OnPress": "/ESPM/Actions/Products/NavToProducts_Detail.action"
+					},
+					"Layout": {
+						"LayoutType": "HorizontalScroll"
+					}
+				},
+				{
+					"Footer": {
+						"Target": "",
+						"_Name": "SectionFooter0",
+						"Caption": "$(L,'see_all_customers')",
+						"AttributeLabel": "/ESPM/Rules/Customers/Customers_Count.js",
+						"AccessoryType": "disclosureIndicator",
+						"FooterStyle": "attribute",
+						"OnPress": "/ESPM/Actions/Customers/NavToCustomers_List.action",
+						"UseBottomPadding": true
+					},
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,'my_customers')"
+					},
+					"_Type": "Section.Type.ObjectCollection",
+					"Target": {
+						"EntitySet": "Customers",
+						"Service": "/ESPM/Services/ESPM.service"
+					},
+					"_Name": "SectionObjectCollection0",
+					"EmptySection": {
+						"Caption": "$(L,'no_customer')",
+						"FooterVisible": true
+					},
+					"ObjectCell": {
+						"Title": "{LastName}",
+						"Subhead": "{FirstName}",
+						"DetailImage": "/ESPM/Rules/Customers/Customers_Image.js",
+						"DetailImageIsCircular": true,
+						"AccessoryType": "none",
+						"OnPress": "/ESPM/Actions/Customers/NavToCustomers_Detail.action"
+					},
+					"MaxItemCount": 4,
+					"Layout": {
+						"NumberOfColumns": 2
+					}
+				},
+				{
+					"Footer": {
+						"Target": "",
+						"_Name": "SectionFooter1",
+						"Caption": "$(L,'see_all_suppliers')",
+						"AttributeLabel": "/ESPM/Rules/Suppliers/Suppliers_Count.js",
+						"AccessoryType": "disclosureIndicator",
+						"FooterStyle": "attribute",
+						"OnPress": "/ESPM/Actions/Suppliers/NavToSuppliers_List.action",
+						"UseBottomPadding": true
+					},
+					"Header": {
+						"UseTopPadding": false,
+						"Caption": "$(L,'my_suppliers')"
+					},
+					"_Type": "Section.Type.ObjectCollection",
+					"Target": {
+						"EntitySet": "Suppliers",
+						"Service": "/ESPM/Services/ESPM.service"
+					},
+					"_Name": "SectionObjectCollection1",
+					"EmptySection": {
+						"Caption": "$(L,'no_supplier') ",
+						"FooterVisible": true
+					},
+					"ObjectCell": {
+						"Title": "{SupplierName}",
+						"Subhead": "{SupplierId}",
+						"DetailImage": "/ESPM/Rules/Suppliers/Suppliers_Image.js",
+						"DetailImageIsCircular": true,
+						"AccessoryType": "none",
+						"OnPress": "/ESPM/Actions/Suppliers/NavToSuppliers_Detail.action"
+					},
+					"MaxItemCount": 4,
+					"Layout": {
+						"NumberOfColumns": 2
+					}
+				}
+				
+			]
+		}
+	],
+	"Target": "",
+	"_Type": "Page",
+	"_Name": "Overview",
+	"Caption": "$(L,'title')"
+}

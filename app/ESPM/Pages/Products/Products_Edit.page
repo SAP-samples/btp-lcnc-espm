@@ -1,0 +1,239 @@
+{
+	"Controls": [
+		{
+			"Target": "",
+			"_Type": "Control.Type.FormCellContainer",
+			"_Name": "FormCellContainer",
+			"Sections": [
+				{
+					"Controls": [
+						{
+							"Target": "",
+							"Value": "{ProductId}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ProductID",
+							"IsEditable": false,
+							"IsVisible": true,
+							"Styles": {
+								"Value": "read-only"
+							},
+							"Caption": "ID",
+							"PlaceHolder": "value",
+							"KeyboardType": "DateTime"
+						},
+						{
+							"Target": "",
+							"Value": "{Name}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ProductName",
+							"IsEditable": true,
+							"IsVisible": true,
+							"Caption": "Name",
+							"PlaceHolder": "value",
+							"KeyboardType": "DateTime"
+						},
+						{
+							"Caption": "Description",
+							"Target": "",
+							"Value": "{ShortDescription}",
+							"_Type": "Control.Type.FormCell.Note",
+							"_Name": "ProductDescription",
+							"IsEditable": true,
+							"IsVisible": true,
+							"PlaceHolder": "Description"
+						},
+						{
+							"IsBarcodeScanEnabled": true,
+							"IsSearchEnabled": false,
+							"Target": "",
+							"Value": "{Category}",
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "ProductCategory",
+							"IsEditable": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
+							"Caption": "Category",
+							"PickerPrompt": "Please select a category",
+							"IsSelectedSectionEnabled": true,
+							"IsPickerDismissedOnSelection": true,
+							"Search": {
+								"Enabled": true,
+								"Placeholder": "Category Search"
+							},
+							"PickerItems": {
+								"DisplayValue": "{CategoryName}",
+								"ReturnValue": "{Category}",
+								"Target": {
+									"EntitySet": "ProductCategories",
+									"Service": "/ESPM/Services/ESPM.service"
+								}
+							}
+						},
+						{
+							"Target": "",
+							"Value": "{Price}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ProductPrice",
+							"IsEditable": true,
+							"Caption": "Price"
+						},
+						{
+							"Target": "",
+							"Value": "{CurrencyCode}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ProductCurrencyCode",
+							"IsEditable": false,
+							"Caption": "Currency",
+							"Styles": {
+								"Value": "read-only"
+							}
+						}
+					],
+					"Target": "",
+					"Caption": "Product",
+					"Visible": true
+				},
+				{
+					"Controls": [
+						{
+							"Target": "",
+							"Value": "{DimensionHeight}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ProductHeight",
+							"IsEditable": true,
+							"IsVisible": true,
+							"Caption": "Height",
+							"PlaceHolder": "value",
+							"KeyboardType": "DateTime"
+						},
+						{
+							"Target": "",
+							"Value": "{DimensionWidth}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ProductWidth",
+							"IsEditable": true,
+							"IsVisible": true,
+							"Caption": "Width",
+							"PlaceHolder": "value",
+							"KeyboardType": "DateTime"
+						},
+						{
+							"Target": "",
+							"Value": "{DimensionDepth}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ProductDepth",
+							"IsEditable": true,
+							"IsVisible": true,
+							"Caption": "Depth",
+							"KeyboardType": "DateTime"
+						},
+						{
+							"Target": "",
+							"Value": "{DimensionUnit}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ProductDimensionUnit",
+							"IsEditable": true,
+							"IsVisible": true,
+							"Caption": "Unit",
+							"PlaceHolder": "value",
+							"KeyboardType": "DateTime"
+						}
+					],
+					"Target": "",
+					"Caption": "Dimensions",
+					"Visible": true
+				},
+				{
+					"Controls": [
+						{
+							"Target": "",
+							"Value": "{Weight}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ProductWeight",
+							"IsEditable": true,
+							"IsVisible": true,
+							"Caption": "Weight",
+							"PlaceHolder": "value",
+							"KeyboardType": "DateTime"
+						},
+						{
+							"Target": "",
+							"Value": "{WeightUnit}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "ProductWeightUnit",
+							"IsEditable": true,
+							"IsVisible": true,
+							"Caption": "Unit",
+							"PlaceHolder": "value",
+							"KeyboardType": "DateTime"
+						}
+					],
+					"Target": "",
+					"Caption": "Weight",
+					"Visible": true
+				},
+				{
+					"Controls": [
+						{
+							"Target": "",
+							"Value": "{SupplierDetails_SupplierId}",
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "productSupplierID",
+							"IsEditable": true,
+							"IsVisible": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
+							"Caption": "Supplier",
+							"PickerPrompt": "Choose Supplier",
+							"IsSelectedSectionEnabled": true,
+							"IsPickerDismissedOnSelection": true,
+							"Search": {
+								"Enabled": true,
+								"BarcodeScanner": true,
+								"MinimumCharacterThreshold": 3
+							},
+							"PickerItems": {
+								"DisplayValue": "{SupplierId} - {SupplierName}",
+								"ReturnValue": "{SupplierId}",
+								"Target": {
+									"EntitySet": "Suppliers",
+									"Service": "/ESPM/Services/ESPM.service"
+								}
+							}
+						}
+					],
+					"Target": "",
+					"Caption": "Supplier",
+					"Visible": true
+				}
+			]
+		}
+	],
+	"Target": "",
+	"_Type": "Page",
+	"_Name": "Products_Edit",
+	"Caption": "$(L,'update_product')",
+	"ActionBar": {
+		"Items": [
+			{
+				"Target": "",
+				"_Name": "ActionBarItem0",
+				"SystemItem": "Cancel",
+				"Position": "left",
+				"IsIconCircular": false,
+				"OnPress": "/ESPM/Actions/CloseModalPage_Cancel.action",
+				"Text": ""
+			},
+			{
+				"Target": "",
+				"_Name": "ActionBarItem1",
+				"SystemItem": "Save",
+				"Position": "right",
+				"IsIconCircular": false,
+				"OnPress": "/ESPM/Actions/Products/Products_UpdateEntity.action",
+				"Text": ""
+			}
+		],
+		"_Name": "ActionBar0"
+	}
+}

@@ -1,0 +1,8 @@
+{
+	"_Type": "Action.Type.CheckRequiredFields",
+	"OnFailure": "/ESPM/Rules/SalesOrders/SalesOrderCreate_CheckRequired.js",
+	"OnSuccess": "/ESPM/Actions/SalesOrders/SalesOrders_CreateEntity.action",
+	"RequiredFields": [
+		"customerPkr"
+	]
+}

@@ -1,0 +1,33 @@
+{
+  "Credential": "cf",
+  "CF": {
+    "Target": "",
+    "Organization": "",
+    "Space": "",
+    "Deploy": {
+      "Description":"ESPM application",
+      "WebClient":{
+        "AutoUrl":true,
+        "Version":"",
+         "URL":""
+      },
+      "Destination": [
+        { "CF": "ESPM-app-srv", "MDK": "../service/ESPM/", "URL": ""}
+      ]
+    }
+  },
+  "MobileService": {
+    "Type": "standard",
+    "AdminAPI": "",
+    "AppId": "",
+    "Destination": []
+  },
+  "Onboarding": {
+    "Schema": "sapmobilesvcs",
+    "TimeZone": "UTC",
+    "URL": ""
+  },
+  "LCAP": {
+    "Service":[{"mdk":"ESPM/Services/service1.service","cap":{"name":"ESPMService","sourcePath":"srv/service.cds","path":"/service/ESPM/","entryPath":"/service/ESPM","destination":"ESPM-app-srv","value":"0"}}]
+  }
+}

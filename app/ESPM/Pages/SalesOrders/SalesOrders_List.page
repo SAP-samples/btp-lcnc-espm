@@ -1,0 +1,64 @@
+{
+	"Controls": [
+		{
+			"Target": "",
+			"_Type": "Control.Type.SectionedTable",
+			"_Name": "SectionedTable",
+			"Sections": [
+				{
+					"Header": {
+						"UseTopPadding": false
+					},
+					"_Type": "Section.Type.ObjectTable",
+					"Target": {
+						"Service": "/ESPM/Services/ESPM.service",
+						"EntitySet": "SalesOrderHeaders",
+						"QueryOptions": "$expand=CustomerDetails,Items"
+					},
+					"_Name": "SectionObjectTable0",
+					"EmptySection": {
+						"FooterVisible": false
+					},
+					"ObjectCell": {
+						"DetailImage": "sap-icon://sales-order",
+						"Title": "{SalesOrderId}",
+						"Subhead": "{CustomerDetails/FirstName}, {CustomerDetails/LastName}",
+						"Footnote": "{CurrencyCode}",
+						"Description": "Gross Amt: $(N,{GrossAmount},'',{minimumFractionDigits:2, maximumFractionDigits:2, useGrouping:true})",
+						"StatusText": "$(N,{NetAmount},'',{minimumFractionDigits:2, maximumFractionDigits:2, useGrouping:true})",
+						"SubstatusText": "$(N,{TaxAmount},'',{minimumFractionDigits:2, maximumFractionDigits:2, useGrouping:true})",
+						"DetailImageIsCircular": false,
+						"PreserveIconStackSpacing": false,
+						"AccessoryType": "disclosureIndicator",
+						"OnPress": "/ESPM/Actions/SalesOrders/NavToSalesOrders_Detail.action"
+					},
+					"Search": {
+						"Enabled": true,
+						"Placeholder": "$(L,'search')",
+						"BarcodeScanner": true,
+						"Delay": 500,
+						"MinimumCharacterThreshold": 3
+					}
+				}
+			]
+		}
+	],
+	"Target": "",
+	"_Type": "Page",
+	"_Name": "SalesOrders_List",
+	"Caption": "$(L,'sales_orders')",
+	"ActionBar": {
+		"Items": [
+			{
+				"Target": "",
+				"_Name": "ActionBarItem0",
+				"SystemItem": "Add",
+				"Position": "right",
+				"IsIconCircular": false,
+				"OnPress": "/ESPM/Actions/SalesOrders/NavToSalesOrders_Create.action",
+				"Text": ""
+			}
+		],
+		"_Name": "ActionBar0"
+	}
+}

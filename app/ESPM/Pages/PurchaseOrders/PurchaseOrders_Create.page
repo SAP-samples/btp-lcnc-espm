@@ -1,0 +1,82 @@
+{
+	"Controls": [
+		{
+			"Target": "",
+			"_Type": "Control.Type.FormCellContainer",
+			"_Name": "FormCellContainer",
+			"Sections": [
+				{
+					"Controls": [
+						{
+							"Value": "/ESPM/Rules/PurchaseOrders/PurchaseOrders_GenerateNextPOId.js",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "poIdPrp",
+							"IsEditable": false,
+							"Styles": {
+								"Value": "read-only"
+							},
+							"Caption": "PurchaseOrder ID",
+							"PlaceHolder": "value"
+						},
+						{
+							"validationProperties": {
+								"ValidationMessage": "Supplier cannot be empty",
+								"ValidationMessageColor": "d1722e",
+								"SeparatorBackgroundColor": "000000",
+								"SeparatorIsHidden": false,
+								"ValidationViewBackgroundColor": "0000ffff",
+								"ValidationViewIsHidden": true
+							},
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "supplierPkr",
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
+							"Caption": "Supplier",
+							"PickerPrompt": "Choose Supplier from",
+							"OnValueChange": "/ESPM/Rules/PurchaseOrders/PurchaseOrderCreate_OnValueChange.js",
+							"IsPickerDismissedOnSelection": true,
+							"PickerItems": {
+								"DisplayValue": "{SupplierId} - {SupplierName}",
+								"ReturnValue": "{SupplierId}",
+								"Target": {
+									"EntitySet": "Suppliers",
+									"Service": "/ESPM/Services/ESPM.service",
+									"UniqueIdType": "Integer"
+								}
+							}
+						}
+					],
+					"Target": "",
+					"Visible": true
+				}
+			]
+		}
+	],
+	"Target": "",
+	"_Type": "Page",
+	"_Name": "PurchaseOrders_Create",
+	"Caption": "$(L,'create_purchase_order')",
+	"ActionBar": {
+		"Items": [
+			{
+				"Target": "",
+				"_Name": "ActionBarItem0",
+				"SystemItem": "Cancel",
+				"Position": "left",
+				"IsIconCircular": false,
+				"OnPress": "/ESPM/Actions/CloseModalPage_Cancel.action",
+				"Text": ""
+			},
+			{
+				"Target": "",
+				"_Name": "ActionBarItem1",
+				"SystemItem": "Save",
+				"Position": "right",
+				"IsIconCircular": false,
+				"OnPress": "/ESPM/Actions/PurchaseOrders/PurchaseOrderCreate_CheckRequiredFields.action",
+				"Text": ""
+			}
+		],
+		"_Name": "ActionBar0"
+	}
+}

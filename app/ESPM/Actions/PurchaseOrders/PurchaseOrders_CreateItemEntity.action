@@ -1,0 +1,29 @@
+{
+	"_Type": "Action.Type.ODataService.CreateRelatedEntity",
+	"ActionResult": {
+		"_Name": "create"
+	},
+	"OnFailure": "/ESPM/Actions/CreateEntityFailureMessage.action",
+	"OnSuccess": "/ESPM/Rules/PurchaseOrders/PurchaseOrders_UpdateHeaderAmounts.js",
+	"Target": {
+		"EntitySet": "PurchaseOrderItems",
+		"Service": "/ESPM/Services/ESPM.service"
+	},
+	"ParentLink": {
+		"Property": "Items",
+		"Target": {
+			"EntitySet": "PurchaseOrderHeaders",
+			"ReadLink": "{@odata.readLink}"
+		}
+	},
+	"Properties": {
+		"CurrencyCode": "#Control:currencyPrp/#Value",
+		"GrossAmount": "#Control:grossAmtPrp/#Value",
+		"NetAmount": "#Control:netAmtPrp/#Value",
+		"ProductDetails_ProductId": "#Control:productPkr/#SelectedValue",
+		"Header_PurchaseOrderId": "#Control:poIdPrp/#Value",
+		"Quantity": "#Control:quantityPkr/#SelectedValue",
+		"QuantityUnit": "#Control:quantityUnit/#Value",
+		"TaxAmount": "#Control:taxPrp/#Value"
+	}
+}

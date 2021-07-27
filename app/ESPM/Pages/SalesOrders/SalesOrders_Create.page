@@ -1,0 +1,82 @@
+{
+	"Controls": [
+		{
+			"Target": "",
+			"_Type": "Control.Type.FormCellContainer",
+			"_Name": "FormCellContainer",
+			"Sections": [
+				{
+					"Controls": [
+						{
+							"Value": "/ESPM/Rules/SalesOrders/SalesOrders_GenerateNextSOId.js",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "SOIdPrp",
+							"IsEditable": false,
+							"Styles": {
+								"Value": "read-only"
+							},
+							"Caption": "SalesOrder Id",
+							"PlaceHolder": "value"
+						},
+						{
+							"validationProperties": {
+								"ValidationMessage": "Customer cannot be empty",
+								"ValidationMessageColor": "d1722e",
+								"SeparatorBackgroundColor": "000000",
+								"SeparatorIsHidden": false,
+								"ValidationViewBackgroundColor": "0000ffff",
+								"ValidationViewIsHidden": true
+							},
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "customerPkr",
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
+							"Caption": "Customer",
+							"PickerPrompt": "Choose Customer from",
+							"OnValueChange": "/ESPM/Rules/SalesOrders/SalesOrderCreate_OnValueChange.js",
+							"IsPickerDismissedOnSelection": true,
+							"PickerItems": {
+								"DisplayValue": "{FirstName}, {LastName}",
+								"ReturnValue": "{CustomerId}",
+								"Target": {
+									"EntitySet": "Customers",
+									"Service": "/ESPM/Services/ESPM.service",
+									"UniqueIdType": "Integer"
+								}
+							}
+						}
+					],
+					"Target": "",
+					"Visible": true
+				}
+			]
+		}
+	],
+	"Target": "",
+	"_Type": "Page",
+	"_Name": "SalesOrders_Create",
+	"Caption": "$(L,'create_sales_order')",
+	"ActionBar": {
+		"Items": [
+			{
+				"Target": "",
+				"_Name": "ActionBarItem0",
+				"SystemItem": "Cancel",
+				"Position": "left",
+				"IsIconCircular": false,
+				"OnPress": "/ESPM/Actions/CloseModalPage_Cancel.action",
+				"Text": ""
+			},
+			{
+				"Target": "",
+				"_Name": "ActionBarItem1",
+				"SystemItem": "Save",
+				"Position": "right",
+				"IsIconCircular": false,
+				"OnPress": "/ESPM/Actions/SalesOrders/SalesOrderCreate_CheckRequiredFields.action",
+				"Text": ""
+			}
+		],
+		"_Name": "ActionBar0"
+	}
+}

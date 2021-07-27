@@ -1,0 +1,165 @@
+{
+	"Controls": [
+		{
+			"Target": "",
+			"_Type": "Control.Type.FormCellContainer",
+			"_Name": "FormCellContainer",
+			"Sections": [
+				{
+					"Controls": [
+						{
+							"Target": "",
+							"Value": "{PurchaseOrderId}",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "poIdPrp",
+							"IsEditable": false,
+							"Styles": {
+								"Value": "read-only"
+							},
+							"Caption": "PurchaseOrder ID",
+							"PlaceHolder": "value"
+						},
+						{
+							"Target": "",
+							"validationProperties": {
+								"ValidationMessage": "Select a Product from list",
+								"ValidationMessageColor": "d1722e",
+								"SeparatorBackgroundColor": "000000",
+								"SeparatorIsHidden": false,
+								"ValidationViewBackgroundColor": "0000ffff",
+								"ValidationViewIsHidden": true
+							},
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "productPkr",
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
+							"Caption": "Product",
+							"PickerPrompt": "Select Product",
+							"OnValueChange": "/ESPM/Rules/PurchaseOrders/PurchaseOrders_DataOnValueChange.js",
+							"IsSelectedSectionEnabled": true,
+							"IsPickerDismissedOnSelection": true,
+							"PickerItems": {
+								"DisplayValue": "{ProductId} - {Name}",
+								"ReturnValue": "{ProductId}",
+								"Target": {
+									"EntitySet": "Products",
+									"Service": "/ESPM/Services/ESPM.service",
+									"UniqueIdType": "Integer"
+								}
+							}
+						},
+						{
+							"Target": "",
+							"Value": [
+								"1"
+							],
+							"_Type": "Control.Type.FormCell.ListPicker",
+							"_Name": "quantityPkr",
+							"IsEditable": true,
+							"IsVisible": true,
+							"AllowMultipleSelection": false,
+							"AllowEmptySelection": false,
+							"Caption": "Quantity",
+							"PickerPrompt": "Pick Quantity",
+							"OnValueChange": "/ESPM/Rules/PurchaseOrders/PurchaseOrders_DataOnValueChange.js",
+							"IsSelectedSectionEnabled": true,
+							"IsPickerDismissedOnSelection": true,
+							"PickerItems": [
+								"1",
+								"2",
+								"3",
+								"4",
+								"5",
+								"6",
+								"7",
+								"8",
+								"9",
+								"10"
+							]
+						},
+						{
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"Target": "",
+							"_Name": "quantityUnit",
+							"IsEditable": false,
+							"IsVisible": true,
+							"Styles": {
+								"Value": "read-only"
+							},
+							"Caption": "Quantity Unit"
+						},
+						{
+							"Target": "",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "currencyPrp",
+							"IsEditable": false,
+							"Styles": {
+								"Value": "read-only"
+							},
+							"Caption": "Currency Code"
+						},
+						{
+							"Target": "",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "netAmtPrp",
+							"IsEditable": false,
+							"Styles": {
+								"Value": "read-only"
+							},
+							"Caption": "Net Amount"
+						},
+						{
+							"Target": "",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "taxPrp",
+							"IsEditable": false,
+							"Styles": {
+								"Value": "read-only"
+							},
+							"Caption": "Tax"
+						},
+						{
+							"Target": "",
+							"_Type": "Control.Type.FormCell.SimpleProperty",
+							"_Name": "grossAmtPrp",
+							"IsEditable": false,
+							"Styles": {
+								"Value": "read-only"
+							},
+							"Caption": "Gross Amount"
+						}
+					],
+					"Target": "",
+					"Visible": true
+				}
+			]
+		}
+	],
+	"Target": "",
+	"_Type": "Page",
+	"_Name": "PurchaseOrders_CreateItem",
+	"Caption": "$(L,'create_purchase_order_item')",
+	"ActionBar": {
+		"Items": [
+			{
+				"Target": "",
+				"_Name": "ActionBarItem0",
+				"SystemItem": "Cancel",
+				"Position": "left",
+				"IsIconCircular": false,
+				"OnPress": "/ESPM/Actions/CloseModalPage_Cancel.action",
+				"Text": "Item"
+			},
+			{
+				"Target": "",
+				"_Name": "ActionBarItem1",
+				"SystemItem": "Save",
+				"Position": "right",
+				"IsIconCircular": false,
+				"OnPress": "/ESPM/Actions/PurchaseOrders/PurchaseOrderItemCreate_CheckRequiredFields.action",
+				"Text": "Item"
+			}
+		],
+		"_Name": "ActionBar0"
+	}
+}

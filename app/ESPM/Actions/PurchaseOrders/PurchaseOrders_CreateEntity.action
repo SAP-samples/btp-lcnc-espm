@@ -1,0 +1,18 @@
+{
+	"CreateLinks": [],
+	"OnFailure": "/ESPM/Actions/CreateEntityFailureMessage.action",
+	"OnSuccess": "/ESPM/Actions/CreateEntitySuccessMessage.action",
+	"Properties": {
+		"CurrencyCode": "EUR",
+		"PurchaseOrderId": "#Control:poIdPrp/#Value",
+		"SupplierDetails_SupplierId": "#Control:supplierPkr/#SelectedValue"
+	},
+	"Target": {
+		"EntitySet": "PurchaseOrderHeaders",
+		"Service": "/ESPM/Services/ESPM.service"
+	},
+	"ActionResult": {
+		"_Name": "create"
+	},
+	"_Type": "Action.Type.ODataService.CreateEntity"
+}

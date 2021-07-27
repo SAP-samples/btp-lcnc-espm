@@ -1,0 +1,10 @@
+{
+	"Service": "/ESPM/Services/ESPM.service",
+	"_Type": "Action.Type.ODataService.Initialize",
+	"ShowActivityIndicator": true,
+	"OnSuccess": "/ESPM/Rules/Service/InitializeSuccess.js",
+	"OnFailure": "/ESPM/Actions/Service/InitializeFailureMessage.action",
+	"ActionResult": {
+		"_Name": "init"
+	}
+}
