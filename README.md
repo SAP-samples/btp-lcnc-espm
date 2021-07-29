@@ -1,5 +1,7 @@
 # Enterprise Sales Procurement Model Application
 
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/btp-lcnc-espm)](https://api.reuse.software/info/github.com/SAP-samples/btp-lcnc-espm)
+
 ## Description
 
 This is a sample project demonstrating the capabilities of the Low Code Application Platform.
