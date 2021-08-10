@@ -1,0 +1,18 @@
+<mvc:View controllerName="ESPM.controller.View1"
+	xmlns:l="sap.ui.layout"
+	xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="sap.m">
+    
+     <!--
+     <Button text="{local>/url}" press="setUrl"></Button>
+	 <html:iframe target='_top' src="{local>/url}" id="mdkframe" height="50%" width="100%">
+     </html:iframe>
+      binding works for button text, but not work for iframe src
+     -->
+     <Panel class="mdkContainer" id="mdkcontainer">
+       <html:iframe class="mdkframe" target='_top'  id="mdkframe" height="100%" width="100%">
+       </html:iframe>
+     </Panel>
+</mvc:View>

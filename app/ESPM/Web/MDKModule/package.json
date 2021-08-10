@@ -1,0 +1,23 @@
+{
+  "name": "mdkmodule",
+  "version": "0.0.1",
+  "devDependencies": {
+      "@ui5/cli": "^2.10.4",
+      "@ui5/fs": "^2.0.6",
+      "@ui5/logger": "^2.0.1",
+      "@sap/ux-ui5-tooling": "1",
+      "rimraf": "3.0.2",
+      "bestzip": "^2.1.7"
+  },
+  "scripts": {
+      "build": "ui5 build -a --clean-dest --include-task=generateManifestBundle generateCachebusterInfo && npm run zip",
+      "zip": "mdk amend --target cloud && cd dist && npx bestzip ../MDKModule-content.zip *",
+      "buildmdk": "cd ../.. && mdk build --target module --ui5 && cd Web/MDKModule && npm run sync2mdk",
+      "sync2mdk": "rm -rf ../../.dist && npm install && npm run build && mkdir ../../.dist && mv MDKModule-content.zip ../../.dist/capex_doc2.zip"
+  },
+  "ui5": {
+      "dependencies": [
+          "@sap/ux-ui5-tooling"
+      ]
+  }
+}

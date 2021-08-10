@@ -8,7 +8,7 @@
     "dependencies": {
         "@sap/cds": "^5",
         "express": "^4",
-        "@sap/hana-client": "^2.6.61"
+        "hdb": "^0.18.3"
     },
     "devDependencies": {
         "sqlite3": "^5.0.2"

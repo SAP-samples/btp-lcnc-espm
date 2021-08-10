@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>
+		ESPM
+	</title>
+	<style>
+		@media (min-width: 80rem) {
+			.applicationContainerShell {
+				width: 80rem;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	</style>
+</head>
+
+<body>
+	<noscript>
+		<strong>We're sorry but ESPM doesn't work properly without JavaScript enabled. Please enable
+				it to continue.</strong>
+	</noscript>
+	<div id="root" class="applicationContainerShell">
+		<script>
+			function getQueryStringValue(key) {
+				return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));
+			}
+			var msg = getQueryStringValue('msg');
+			if (msg) {
+				var msgElement = document.createElement("H1");
+				msgElement.innerText = msg;
+				msgElement.style = "text-align:center;";
+				document.body.appendChild(msgElement);
+			}
+		</script>
+		<h1 style="text-align:center;">Goodbye</h1>
+		<h4 style="text-align:center;">You have signed out.</h4>
+		<p style="text-align:center;">
+			<a href="index.html">Sign In Again</a>
+		</p>
+	</div>
+
+</html>

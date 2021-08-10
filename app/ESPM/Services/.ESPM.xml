@@ -12,7 +12,6 @@
         <EntitySet Name="ProductCategories" EntityType="ESPMService.ProductCategories"/>
         <EntitySet Name="ProductTexts" EntityType="ESPMService.ProductTexts"/>
         <EntitySet Name="Products" EntityType="ESPMService.Products">
-          <NavigationPropertyBinding Path="StockDetails" Target="Stock"/>
           <NavigationPropertyBinding Path="SupplierDetails" Target="Suppliers"/>
         </EntitySet>
         <EntitySet Name="PurchaseOrderHeaders" EntityType="ESPMService.PurchaseOrderHeaders">
@@ -31,9 +30,7 @@
           <NavigationPropertyBinding Path="ProductDetails" Target="Products"/>
           <NavigationPropertyBinding Path="Header" Target="SalesOrderHeaders"/>
         </EntitySet>
-        <EntitySet Name="Stock" EntityType="ESPMService.Stock">
-          <NavigationPropertyBinding Path="ProductDetails" Target="Products"/>
-        </EntitySet>
+        <EntitySet Name="Stock" EntityType="ESPMService.Stock"/>
         <EntitySet Name="Suppliers" EntityType="ESPMService.Suppliers">
           <NavigationPropertyBinding Path="Products" Target="Products"/>
         </EntitySet>
@@ -100,10 +97,6 @@
         <Property Name="Weight" Type="Edm.Decimal" Scale="3" Precision="13"/>
         <Property Name="WeightUnit" Type="Edm.String" MaxLength="3"/>
         <Property Name="Picture" Type="Edm.Stream"/>
-        <NavigationProperty Name="StockDetails" Type="ESPMService.Stock" Partner="ProductDetails">
-          <ReferentialConstraint Property="StockDetails_ProductId" ReferencedProperty="ProductId"/>
-        </NavigationProperty>
-        <Property Name="StockDetails_ProductId" Type="Edm.String" MaxLength="255"/>
         <NavigationProperty Name="SupplierDetails" Type="ESPMService.Suppliers" Partner="Products">
           <ReferentialConstraint Property="SupplierDetails_SupplierId" ReferencedProperty="SupplierId"/>
         </NavigationProperty>
@@ -126,9 +119,9 @@
       </EntityType>
       <EntityType Name="PurchaseOrderItems">
         <Key>
-          <PropertyRef Name="ID"/>
+          <PropertyRef Name="Id"/>
         </Key>
-        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false"/>
         <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5"/>
         <Property Name="GrossAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
         <Property Name="NetAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
@@ -164,9 +157,9 @@
       </EntityType>
       <EntityType Name="SalesOrderItems">
         <Key>
-          <PropertyRef Name="ID"/>
+          <PropertyRef Name="Id"/>
         </Key>
-        <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+        <Property Name="Id" Type="Edm.Guid" Nullable="false"/>
         <Property Name="CurrencyCode" Type="Edm.String" MaxLength="5"/>
         <Property Name="DeliveryDate" Type="Edm.DateTimeOffset"/>
         <Property Name="GrossAmount" Type="Edm.Decimal" Scale="3" Precision="15"/>
@@ -193,9 +186,6 @@
         <Property Name="Quantity" Type="Edm.Decimal" Scale="3" Precision="13"/>
         <Property Name="QuantityLessMin" Type="Edm.Boolean"/>
         <Property Name="UpdatedTimestamp" Type="Edm.DateTimeOffset"/>
-        <NavigationProperty Name="ProductDetails" Type="ESPMService.Products" Partner="StockDetails">
-          <ReferentialConstraint Property="ProductId" ReferencedProperty="StockDetails_ProductId"/>
-        </NavigationProperty>
       </EntityType>
       <EntityType Name="Suppliers">
         <Key>
@@ -216,10 +206,10 @@
       <Annotations Target="ESPMService.Products/Picture">
         <Annotation Term="Core.MediaType" String="image/jpeg"/>
       </Annotations>
-      <Annotations Target="ESPMService.PurchaseOrderItems/ID">
+      <Annotations Target="ESPMService.PurchaseOrderItems/Id">
         <Annotation Term="Core.Computed" Bool="true"/>
       </Annotations>
-      <Annotations Target="ESPMService.SalesOrderItems/ID">
+      <Annotations Target="ESPMService.SalesOrderItems/Id">
         <Annotation Term="Core.Computed" Bool="true"/>
       </Annotations>
     </Schema>
