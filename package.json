@@ -54,5 +54,6 @@
         "hana": {
             "deploy-format": "hdbtable"
         }
-    }
+    },
+    "lcap": true
 }
