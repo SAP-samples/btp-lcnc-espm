@@ -24,6 +24,12 @@ mta_archives/
 *.iml
 *.flattened-pom.xml
 
-# IDEs
-# .vscode
-# .idea
+# VSCode project
+.vscode
+
+# package lock for now ignored
+package-lock.json
+
+# LCAP generated files
+app/**/dist/
+app/**/dist-zip/
