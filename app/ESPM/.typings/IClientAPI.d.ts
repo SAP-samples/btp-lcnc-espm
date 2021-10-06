@@ -182,7 +182,7 @@ interface IClientAPI {
   getMobileServiceAppId(): string;
   /**
    * This method is to get Endpoint Url of connection to application in Mobile Services on SAP 
-   * Cloud Platform .
+   * Business Technology Platform .
    */
   getMobileServiceEndpointUrl(): string;
   /**
