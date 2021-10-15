@@ -18,8 +18,7 @@ Features:
 ## Requirements
 
 The included resources depend on availability of the SAP Business Technology Platform (BTP) account. To use the resources you will need the following:
-1. You have a SAP BTP account. If you don’t have an account, you can register for a free trial account.
-	See [Get a Free Account on SAP BTP Trial](https://www.sap.com/developer/tutorials/hcp-create-trial-account.html).
+1. You have a SAP BTP account
 
 2. Subscribe to the SAP Low Code Application Platform
 
