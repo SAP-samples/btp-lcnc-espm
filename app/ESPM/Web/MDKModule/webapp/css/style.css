@@ -10,6 +10,10 @@
 */
 html,
 body,
+#containerDiv,
+#containerDiv>.sapUiComponentContainer,
+#containerDiv>.sapUiComponentContainer>div,
+.sapUiComponentContainer>div>.sapUiView,
 .mdkContainer,
 .mdkContainer>div,
 .mdkframe {
