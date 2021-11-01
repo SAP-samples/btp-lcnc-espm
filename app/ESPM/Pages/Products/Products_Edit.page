@@ -18,8 +18,7 @@
 								"Value": "read-only"
 							},
 							"Caption": "ID",
-							"PlaceHolder": "value",
-							"KeyboardType": "DateTime"
+							"PlaceHolder": "value"
 						},
 						{
 							"Target": "",
@@ -29,8 +28,7 @@
 							"IsEditable": true,
 							"IsVisible": true,
 							"Caption": "Name",
-							"PlaceHolder": "value",
-							"KeyboardType": "DateTime"
+							"PlaceHolder": "value"
 						},
 						{
 							"Caption": "Description",
@@ -103,8 +101,7 @@
 							"IsEditable": true,
 							"IsVisible": true,
 							"Caption": "Height",
-							"PlaceHolder": "value",
-							"KeyboardType": "DateTime"
+							"PlaceHolder": "value"
 						},
 						{
 							"Target": "",
@@ -114,8 +111,7 @@
 							"IsEditable": true,
 							"IsVisible": true,
 							"Caption": "Width",
-							"PlaceHolder": "value",
-							"KeyboardType": "DateTime"
+							"PlaceHolder": "value"
 						},
 						{
 							"Target": "",
@@ -124,8 +120,7 @@
 							"_Name": "ProductDepth",
 							"IsEditable": true,
 							"IsVisible": true,
-							"Caption": "Depth",
-							"KeyboardType": "DateTime"
+							"Caption": "Depth"
 						},
 						{
 							"Target": "",
@@ -135,8 +130,7 @@
 							"IsEditable": true,
 							"IsVisible": true,
 							"Caption": "Unit",
-							"PlaceHolder": "value",
-							"KeyboardType": "DateTime"
+							"PlaceHolder": "value"
 						}
 					],
 					"Target": "",
@@ -153,8 +147,7 @@
 							"IsEditable": true,
 							"IsVisible": true,
 							"Caption": "Weight",
-							"PlaceHolder": "value",
-							"KeyboardType": "DateTime"
+							"PlaceHolder": "value"
 						},
 						{
 							"Target": "",
@@ -164,8 +157,7 @@
 							"IsEditable": true,
 							"IsVisible": true,
 							"Caption": "Unit",
-							"PlaceHolder": "value",
-							"KeyboardType": "DateTime"
+							"PlaceHolder": "value"
 						}
 					],
 					"Target": "",
