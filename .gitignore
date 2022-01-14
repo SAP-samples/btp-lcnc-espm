@@ -27,9 +27,6 @@ mta_archives/
 # VSCode project
 .vscode
 
-# package lock for now ignored
-package-lock.json
-
 # LCAP generated files
 app/**/dist/
 app/**/dist-zip/
