@@ -30,3 +30,6 @@ mta_archives/
 # LCAP generated files
 app/**/dist/
 app/**/dist-zip/
+
+# Whitesource scan files
+whitesource/
