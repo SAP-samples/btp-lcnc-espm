@@ -245,5 +245,15 @@
 	"Target": "",
 	"_Type": "Page",
 	"_Name": "Overview",
-	"Caption": "$(L,'title')"
+	"Caption": "$(L,'title')",
+	"ToolBar": {
+		"Items": [
+			{
+				"_Name": "LogoutToolbarItem",
+				"_Type": "Control.Type.ToolbarItem",
+				"Caption": "Logout",
+				"OnPress": "/ESPM/Actions/LogoutMessage.action"
+			}
+		]
+	}
 }
