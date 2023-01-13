@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Run btp-lcnc-espm-1",
+      "name": "Run ESPM-1",
       "runtimeExecutable": "cds",
       "request": "launch",
       "args": [
@@ -16,7 +16,7 @@
       "envFile": "${workspaceFolder}/env/.env1",
       "preLaunchTask": "dev-project",
       "env": {
-        "run.config": "{\"handlerId\":\"lcap_run_config_handler_id\",\"runnableId\":\"{\\\"projectPath\\\":\\\"/home/user/projects/btp-lcnc-espm\\\",\\\"profileName\\\":\\\"\\\"}\"}"
+        "run.config": "{\"handlerId\":\"lcap_run_config_handler_id\",\"runnableId\":\"{\\\"projectPath\\\":\\\"/home/user/projects/ESPM\\\",\\\"profileName\\\":\\\"\\\"}\"}"
       }
     }
     
