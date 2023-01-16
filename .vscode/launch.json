@@ -1,24 +1,6 @@
 {
   "version": "0.2.0",
   "configurations": [
-    {
-      "name": "Run ESPM-1",
-      "runtimeExecutable": "cds",
-      "request": "launch",
-      "args": [
-        "watch",
-        "--open"
-      ],
-      "console": "internalConsole",
-      "internalConsoleOptions": "openOnSessionStart",
-      "type": "pwa-node",
-      "cwd": "${workspaceFolder}",
-      "envFile": "${workspaceFolder}/env/.env1",
-      "preLaunchTask": "dev-project",
-      "env": {
-        "run.config": "{\"handlerId\":\"lcap_run_config_handler_id\",\"runnableId\":\"{\\\"projectPath\\\":\\\"/home/user/projects/ESPM\\\",\\\"profileName\\\":\\\"\\\"}\"}"
-      }
-    }
     
   ]
 }
