@@ -4,7 +4,7 @@
 
 ## Description
 
-This is a sample project demonstrating the capabilities of the Productivity Toolkit Platform.
+This is a sample project demonstrating the capabilities of Productivity Toolkit in SAP Business Application Studio.
 
 Features:
 
@@ -20,11 +20,11 @@ Features:
 The included resources depend on availability of the SAP Business Technology Platform (BTP) account. To use the resources you will need the following:
 1. You have a SAP BTP account
 
-2. Subscribe to the SAP Productivity Toolkit Platform
+2. Subscribe to SAP Business Application Studio.
 
 ***
 
-The resources can also be used as a general code reference and starting point for the Productivity Toolkit Platform.
+The resources can also be used as a general code reference and starting point for Productivity Toolkit in SAP Business Application Studio.
 
 Please be advised that any downloads are subject to the following:
 
