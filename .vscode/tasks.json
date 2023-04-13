@@ -33,8 +33,13 @@
     },
     {
       "label": "dev-project",
-      "type": "shell",
-      "command": "basctl --command project-api.command.run --param run --param ${workspaceFolder} --param --launchpad",
+      "type": "process",
+      "command": "dev-project",
+      "args": [
+        "run",
+        "${workspaceFolder}",
+        "--launchpad"
+      ],
       "dependsOn": [
         "BuildMDK"
       ],
