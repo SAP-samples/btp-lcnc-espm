@@ -14,7 +14,21 @@
 		"sourceTemplate": {
 			"id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
 			"version": "1.40.12"
-		}
+		},
+        "crossNavigation": {
+            "inbounds": {
+                "ESPM-inbound": {
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    },
+                    "semanticObject": "ESPM",
+                    "action": "display",
+                    "title": "{{appTitle}}",
+                    "icon": ""
+                }
+            }
+        }
 	},
 	"sap.ui": {
 		"technology": "UI5",

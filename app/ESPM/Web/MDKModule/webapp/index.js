@@ -1,4 +1,4 @@
-var __LOAD_WC_RUNTIME_FROM__ = 'https://mdk-webclient-runtime.cfapps.sap.hana.ondemand.com/runtime-5.0.0/';
+var __LOAD_WC_RUNTIME_FROM__ = 'https://mdk-webclient-runtime.cfapps.sap.hana.ondemand.com/runtime/';
 // override fetch for cross origin request
 // for both i18n and ui5 resources
 var origFetch = window.fetch;
