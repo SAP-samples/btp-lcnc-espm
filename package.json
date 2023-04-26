@@ -4,9 +4,9 @@
     "description": "",
     "dependencies": {
         "@sap/cds": "^6.4.0",
-        "@sap/mdk-tools": "^1.4.0",
-        "express": "^4.17.3",
+        "@sap/mdk-tools": "^1.5.3",
         "@sap/xssec": "^3.2.15",
+        "express": "^4.17.3",
         "hdb": "^0.18.3",
         "passport": "^0.6.0"
     },
