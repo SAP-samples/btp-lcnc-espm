@@ -3,31 +3,38 @@
     "version": "1.0.0",
     "description": "",
     "dependencies": {
-        "@sap/cds": "^6.4.0",
-        "@sap/mdk-tools": "^1.7.3",
-        "@sap/xssec": "^3.2.15",
-        "express": "^4.17.3",
-        "hdb": "^0.18.3",
-        "passport": "^0.6.0"
+        "@sap-cloud-sdk/http-client": "^3.4.0",
+        "@sap-cloud-sdk/util": "^3.4.0",
+        "@sap/cds": "^7",
+        "@sap/cds-hana": "^2",
+        "@sap/low-code-event-handler": "^1.2.3",
+        "@sap/xsenv": ">=3.3.2 <3.3.3",
+        "@sap/xssec": "^3.3.4",
+        "express": "^4",
+        "hdb": "^0.19.6",
+        "passport": "^0.6.0",
+        "@sap/mdk-tools": "^1.7.3"
     },
     "devDependencies": {
-        "sqlite3": "^5.0.2"
+        "@cap-js/sqlite": "^1"
     },
     "scripts": {
-        "start": "npx cds run"
+        "start": "cds-serve"
     },
     "cds": {
         "requires": {
-            "db": {
-                "kind": "sql"
+            "[production]": {
+                "db": "hana"
+            },
+            "app-service": {
+                "impl": "@sap/low-code-event-handler"
+            },
+            "auth": {
+                "kind": "xsuaa"
             }
         },
-        "uaa": {
-            "kind": "xsuaa",
-            "credentials": {}
-        },
-        "hana": {
-            "deploy-format": "hdbtable"
+        "features": {
+            "fetch_csrf": true
         }
     },
     "lcap": true

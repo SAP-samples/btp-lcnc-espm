@@ -12,23 +12,24 @@
 		"resources": "resources.json",
 		"ach": "ach",
 		"sourceTemplate": {
-			"id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
-			"version": "1.40.12"
+			"id": "@ext-mdkvsc-npm-dev/generator-mdk",
+			"name": "List Detail",
+			"version": "0.0.1"
 		},
-        "crossNavigation": {
-            "inbounds": {
-                "ESPM-inbound": {
-                    "signature": {
-                        "parameters": {},
-                        "additionalParameters": "allowed"
-                    },
-                    "semanticObject": "ESPM",
-                    "action": "display",
-                    "title": "{{appTitle}}",
-                    "icon": ""
-                }
-            }
-        }
+		"crossNavigation": {
+			"inbounds": {
+				"ESPM-inbound": {
+					"signature": {
+						"parameters": {},
+						"additionalParameters": "allowed"
+					},
+					"semanticObject": "ESPM",
+					"action": "display",
+					"title": "{{appTitle}}",
+					"icon": ""
+				}
+			}
+		}
 	},
 	"sap.ui": {
 		"technology": "UI5",
@@ -75,9 +76,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -89,11 +92,15 @@
 				"controlId": "app",
 				"clearControlAggregation": false
 			},
-			"routes": [{
-				"name": "RouteView1",
-				"pattern": "RouteView1",
-				"target": ["TargetView1"]
-			}],
+			"routes": [
+				{
+					"name": "RouteView1",
+					"pattern": "RouteView1",
+					"target": [
+						"TargetView1"
+					]
+				}
+			],
 			"targets": {
 				"TargetView1": {
 					"viewType": "XML",
@@ -104,5 +111,8 @@
 				}
 			}
 		}
+	},
+	"sap.platform.cf": {
+		"ui5VersionNumber": "1.96.24"
 	}
 }

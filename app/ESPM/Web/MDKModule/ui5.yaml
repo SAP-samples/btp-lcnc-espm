@@ -1,8 +1,7 @@
-specVersion: '1.0'
+specVersion: '2.6'
 metadata:
-  name: 'mdkmodule'
+  name: mdkmodule
 type: application
-ui5Theme: sap_fiori_3
 server:
   customMiddleware:
   - name: fiori-tools-proxy
@@ -23,3 +22,4 @@ server:
     configuration:
      port: 35729
      path: webapp
+

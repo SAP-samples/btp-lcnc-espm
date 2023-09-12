@@ -1,6 +1,6 @@
 using { sap.ui.espm as my } from '../db/schema';
 
-@path: 'service/ESPM'
+@path: '/service/ESPM'
 service ESPMService {
     entity PurchaseOrderItems as projection on my.PurchaseOrderItems;
     entity SalesOrderItems as projection on my.SalesOrderItems;
