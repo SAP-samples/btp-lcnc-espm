@@ -41,6 +41,17 @@
       "options": {
         "cwd": "${workspaceFolder}"
       }
+    },
+    {
+      "type": "dpt.ptdeploy",
+      "label": "Deploy btp-lcnc-espm",
+      "taskType": "Deploy"
+    },
+    {
+      "type": "dpt.ptdeploy",
+      "label": "Enable Discovery and Deploy btp-lcnc-espm",
+      "taskType": "Deploy",
+      "enableDiscovery": "true"
     }
   ]
 }
