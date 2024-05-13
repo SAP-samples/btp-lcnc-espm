@@ -30,7 +30,12 @@
                 "impl": "@sap/low-code-event-handler"
             },
             "auth": {
-                "kind": "xsuaa"
+                "[development]": {
+                    "kind": "dummy"
+                },
+                "[production]": {
+                    "kind": "xsuaa"
+                }
             }
         },
         "features": {
