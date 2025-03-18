@@ -3,31 +3,33 @@
     "version": "1.0.0",
     "description": "",
     "dependencies": {
-        "@sap-cloud-sdk/http-client": "^3.4.0",
-        "@sap-cloud-sdk/util": "^3.4.0",
-        "@sap/cds": "^7",
-        "@sap/cds-hana": "^2",
-        "@sap/low-code-event-handler": "^1.2.4",
+        "@sap-cloud-sdk/http-client": "^4.0.1",
+        "@sap-cloud-sdk/util": "^4.0.1",
+        "@sap/cds": "^8",
+        "@sap/cds-hana": "^1",
+        "@sap/low-code-event-handler": "^1.2.5",
         "@sap/xsenv": ">=3.3.2 <3.3.3",
-        "@sap/xssec": "^3.6.0",
+        "@sap/xssec": "^4.4.0",
         "express": "^4",
-        "hdb": "^0.19.6",
-        "passport": "^0.6.0",
-        "@sap/mdk-tools": "^1.7.3"
+        "hdb": "^0.19.12",
+        "passport": "^0.7.0",
+        "@sap/mdk-tools": "^1.12.1"
     },
     "devDependencies": {
-        "@cap-js/sqlite": "^1"
+        "@cap-js/cds-types": "^0.9.0",
+        "@cap-js/sqlite": "^1",
+        "@sap/dev-cap-tools": "^1.31.0"
     },
     "scripts": {
         "start": "cds-serve"
     },
     "cds": {
+        "sql": {
+          "native_hana_associations": false
+        },			
         "requires": {
             "[production]": {
                 "db": "hana"
-            },
-            "app-service": {
-                "impl": "@sap/low-code-event-handler"
             },
             "auth": {
                 "[development]": {

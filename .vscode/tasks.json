@@ -1,6 +1,19 @@
 {
-  "version": "2.0.0",
+  "version": "1.38.0",
   "tasks": [
+    {
+      "label": "kill-cds-processes",
+      "type": "shell",
+      "command": "pids=$(ps aux | grep -vE 'grep|bash' | grep 'cds.js' | awk '{print $2}'); if [ -n \"$pids\" ]; then kill $pids; fi",
+      "presentation": {
+        "echo": true,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": false,
+        "clear": false
+      }
+    },
     {
       "label": "npm-install",
       "type": "process",
@@ -8,22 +21,17 @@
       "args": [
         "install"
       ],
+      "dependsOn": [
+        "kill-cds-processes"
+      ],
       "options": {
         "cwd": "${workspaceFolder}"
       }
     },
     {
       "label": "BuildMDK",
-      "type": "process",
-      "command": "npx",
-      "args": [
-        "mdk",
-        "build",
-        "--target",
-        "module",
-        "--ui5",
-        "--recursive"
-      ],
+      "type": "shell",
+      "command": "if npm list @sap/mdk-tools --depth=0 > /dev/null 2>&1; then npx mdk build --target module --ui5 --recursive;fi",
       "dependsOn": [
         "npm-install"
       ],
@@ -32,9 +40,13 @@
       }
     },
     {
-      "label": "dev-project",
-      "type": "shell",
-      "command": "basctl --command PT.runner.generateLaunchPage || dev-project run ${workspaceFolder} --launchpad",
+      "label": "PreLaunchTask for Run ESPM",
+      "type": "process",
+      "command": "npx",
+      "args": [
+        "dev-cap-tools",
+        "gen-entrypoint"
+      ],
       "dependsOn": [
         "BuildMDK"
       ],
@@ -44,12 +56,12 @@
     },
     {
       "type": "dpt.ptdeploy",
-      "label": "Deploy btp-lcnc-espm",
+      "label": "Deploy ESPM",
       "taskType": "Deploy"
     },
     {
       "type": "dpt.ptdeploy",
-      "label": "Enable Discovery and Deploy btp-lcnc-espm",
+      "label": "Enable Discovery and Deploy ESPM",
       "taskType": "Deploy",
       "enableDiscovery": "true"
     }
